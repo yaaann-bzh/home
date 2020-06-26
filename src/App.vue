@@ -20,5 +20,19 @@ export default {
 </script>
 
 <style>
+@font-face {
+    font-family: 'open_sansregular';
+    src: url('./assets/fonts/OpenSans-Regular-webfont.eot');
+    src: url('./assets/fonts/OpenSans-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./assets/fonts/OpenSans-Regular-webfont.woff') format('woff'),
+         url('./assets/fonts/OpenSans-Regular-webfont.ttf') format('truetype'),
+         url('./assets/fonts/OpenSans-Regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	font-family: 'open_sansregular', sans-serif;
+}
 
 </style>
