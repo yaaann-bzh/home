@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-success pt-0 pb-0">
+    <header>
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-success pt-0 pb-0">
             <div class="container">
                 <router-link class="navbar-brand" to="/">yaaann</router-link>
                 <button 
@@ -37,7 +37,7 @@
             </div>
             
         </nav>
-    </div>
+    </header>
 </template>
 
 <script>

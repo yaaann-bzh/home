@@ -1,20 +1,25 @@
 <template>
-	<div class="container">
+	<div class="container-fluid position-relative" id="page-content">
 		<app-header></app-header>
-		<div class="row mt-5">
-			<div class="col-12 mt-3">
-				<router-view></router-view>
+		<div class="container">
+			<div class="row">
+				<div class="col-12 mt-3">
+					<router-view></router-view>
+				</div>
 			</div>
 		</div>
+		<app-footer class="row position-absolute w-100"></app-footer>
 	</div>
 </template>
 
 <script>
 import HeaderVue from './components/Header.vue'
+import FooterVue from './components/Footer.vue'
 
 export default {
 	components: {
-		appHeader: HeaderVue
+		appHeader: HeaderVue,
+		appFooter: FooterVue
 	}
 }
 </script>
@@ -33,6 +38,14 @@ export default {
 
 body {
 	font-family: 'open_sansregular', sans-serif;
+}
+
+footer {
+	bottom: 0;
+}
+
+#page-content {
+	min-height: 100vh;
 }
 
 </style>
