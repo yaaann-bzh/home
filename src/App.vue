@@ -1,9 +1,9 @@
 <template>
 	<div class="container-fluid position-relative" id="page-content">
 		<app-header></app-header>
-		<div class="container">
+		<div class="container pt-5 pb-5">
 			<div class="row">
-				<div class="col-12 mt-3">
+				<div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
 					<router-view></router-view>
 				</div>
 			</div>
@@ -17,6 +17,11 @@ import HeaderVue from './components/Header.vue'
 import FooterVue from './components/Footer.vue'
 
 export default {
+	methods: {
+		changeBackground() {
+
+		}
+	},
 	components: {
 		appHeader: HeaderVue,
 		appFooter: FooterVue
@@ -36,16 +41,16 @@ export default {
     font-style: normal;
 }
 
-body {
-	font-family: 'open_sansregular', sans-serif;
-}
-
 footer {
 	bottom: 0;
 }
 
 #page-content {
 	min-height: 100vh;
+}
+
+hr{
+	background-color: #28a745 !important;
 }
 
 </style>

@@ -8,8 +8,11 @@ import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faEarlybirds } from '@fortawesome/free-brands-svg-icons'
+import { faCuttlefish } from '@fortawesome/free-brands-svg-icons'
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
  
-library.add(faHome, faLinkedinIn, faGithubAlt, faEnvelope)
+library.add(faHome, faLinkedinIn, faGithubAlt, faEnvelope, faEarlybirds, faCuttlefish, faExternalLinkAlt)
  
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
