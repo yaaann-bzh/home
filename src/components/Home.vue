@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-3 mt-lg-5">
+    <div class="mt-3 mt-lg-5 col-lg-10 offset-lg-1">
         <h2 class="h1">Qui suis-je ?</h2>
         <hr>
         <h1 class="h3">Yann Tachier, développeur web front/backend</h1>

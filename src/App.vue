@@ -3,7 +3,7 @@
 		<app-header></app-header>
 		<div class="container pt-5 pb-5">
 			<div class="row">
-				<div class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2">
+				<div class="col-12 col-md-10 offset-md-1">
 					<router-view></router-view>
 				</div>
 			</div>
