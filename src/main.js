@@ -11,8 +11,9 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faEarlybirds } from '@fortawesome/free-brands-svg-icons'
 import { faCuttlefish } from '@fortawesome/free-brands-svg-icons'
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
+import { faArrowCircleRight } from "@fortawesome/free-solid-svg-icons";
  
-library.add(faHome, faLinkedinIn, faGithubAlt, faEnvelope, faEarlybirds, faCuttlefish, faExternalLinkAlt)
+library.add(faHome, faLinkedinIn, faGithubAlt, faEnvelope, faEarlybirds, faCuttlefish, faExternalLinkAlt, faArrowCircleRight)
  
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
