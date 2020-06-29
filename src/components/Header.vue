@@ -13,7 +13,7 @@
                 <div class="collapse navbar-collapse" :class="{show: isNavbarVisible}">
                     <ul class="navbar-nav ml-auto mt-3">
                         <li class="nav-item">
-                            <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top" to="/" active-class="custom-active" exact><font-awesome-icon icon="home" class="mr-2 d-md-none d-lg-inline"/>ACCUEIL</router-link>
+                            <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top text-nowrap" to="/" active-class="custom-active" exact><font-awesome-icon icon="home" class="mr-2 d-md-none d-lg-inline"/>ACCUEIL</router-link>
                         </li>
                         <li class="nav-item">
                             <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top" to="/competences" active-class="custom-active">COMPETENCES</router-link>

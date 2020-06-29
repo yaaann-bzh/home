@@ -4,34 +4,12 @@
         <hr>
         <h1 class="h3">Yann Tachier, développeur web front/backend</h1>
         <p>J'ai tout d'abords travaillé pendant douze ans dans le génie climatique comme technicien en bureau d'étude, 
-            puis j’ai choisi reconversion comme <strong>développeur</strong>. Depusi la fin de ma formation avec <em>OpenClassrooms</em>, 
+            puis j’ai choisi reconversion comme <strong>développeur</strong>. Depuis la fin de ma formation avec <em>OpenClassrooms</em>, 
             je réalise des missions en freelance dans la création de sites et applications web.</p>
         <hr>
         <div>
-            <h3 class="h5">Mes profils professionnels :</h3>
-            <div class="d-flex flex-wrap justify-content-around mt-3">
-                <a 
-                        class="btn text-white pr-3 pl-3 m-3" 
-                        href="https://www.malt.fr/profile/yanntachier" 
-                        role="button"
-                        style="background-color: #FF4967;">
-                    <font-awesome-icon :icon="['fas', 'external-link-alt']" class="mr-2"/>Malt
-                </a>
-                <a 
-                        class="btn text-white pr-3 pl-3 m-3" 
-                        href="https://www.codeur.com/-yanntac" 
-                        role="button"
-                        style="background-color: #2169ec;">
-                    <font-awesome-icon :icon="['fab', 'cuttlefish']" class="mr-2"/>Codeur.com
-                </a>
-                <a 
-                        class="btn text-white pr-3 pl-3 m-3" 
-                        href="https://www.lehibou.com/freelance/undefined/33283" 
-                        role="button"
-                        style="background-color: #FF5A5F;">
-                    <font-awesome-icon :icon="['fab', 'earlybirds']" class="mr-2"/>Le Hibou
-                </a>
-            </div>
+            <h3 class="h5">Mes profils professionnels</h3>
+            <app-ext-pro-links></app-ext-pro-links>
         </div>
         <hr>
         <div class="d-flex flex-wrap flex-md-nowrap justify-content-center justify-content-md-between align-item-center">
@@ -61,12 +39,17 @@
 </template>
 
 <script>
+import extProLinksVue from './links/extProLinks.vue';
+
 export default {
     created() {
         document.body.classList.add('homepage');
     },
     beforeDestroy() {
         document.body.classList.remove('homepage');
+    },
+    components: {
+        appExtProLinks: extProLinksVue
     }
 }
 </script>
