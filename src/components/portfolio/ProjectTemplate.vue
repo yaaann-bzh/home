@@ -38,8 +38,19 @@ export default {
 	props: [
 		'url',
 		'github',
-		'gitlab'
-	]
+		'gitlab',
+		'bgClassName'
+	],
+	activated() {
+		if (this.bgClassName && window.innerWidth > 768) {
+			document.body.classList.add(this.bgClassName);
+		}  
+    },
+    deactivated() {
+		if (this.bgClassName) {
+			document.body.classList.remove(this.bgClassName);
+		}  
+    },
 
 }
 </script>
@@ -50,4 +61,5 @@ li > ul {
     list-style-type: '- ';
     font-style: italic;
 }
+
 </style>

@@ -3,7 +3,8 @@
         <app-project-template
                 :url="url"
                 :github="github"
-                :gitlab="gitlab">
+                :gitlab="gitlab"
+                :bgClassName="bgClassName">
             <template v-slot:title>
                 Concevez une carte interactive de location de vélos
             </template>         
@@ -102,7 +103,8 @@ export default {
         return {
             url: 'https://projet3.yaaann.ovh/',
             github: '',
-            gitlab: 'https://gitlab.com/yaaann/oc-projet-2'
+            gitlab: 'https://gitlab.com/yaaann/oc-projet-2',
+            bgClassName: 'velo'
         }
     },
     components: {
@@ -112,5 +114,10 @@ export default {
 </script>
 
 <style>
-
+.velo {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)), url("../../../assets/projets/velo.png");
+	background-attachment: fixed;
+	background-origin: border-box;
+	background-size: cover;
+} 
 </style>

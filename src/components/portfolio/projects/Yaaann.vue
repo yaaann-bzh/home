@@ -3,7 +3,8 @@
         <app-project-template
                 :url="url"
                 :github="github"
-                :gitlab="gitlab">
+                :gitlab="gitlab"
+                :bgClassName="bgClassName">
             <template v-slot:title>
                 Mon site personnel
             </template>         
@@ -38,7 +39,8 @@ export default {
         return {
             url: '',
             github: 'https://github.com/yaaann-bzh/home',
-            gitlab: ''
+            gitlab: '',
+            bgClassName: ''
         }
     },
     components: {

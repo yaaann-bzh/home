@@ -3,7 +3,8 @@
         <app-project-template
                 :url="url"
                 :github="github"
-                :gitlab="gitlab">
+                :gitlab="gitlab"
+                :bgClassName="bgClassName">
             <template v-slot:title>
                 Intégrez la maquette du site d'une agence Web
             </template>         
@@ -108,7 +109,8 @@ export default {
         return {
             url: 'http://projet1.yaaann.ovh/',
             github: 'https://github.com/yaaann-bzh/oc-projet-1',
-            gitlab: 'https://gitlab.com/yaaann/oc-projet-1.git'
+            gitlab: 'https://gitlab.com/yaaann/oc-projet-1.git',
+            bgClassName: 'web-agency'
         }
     },
     components: {
@@ -117,6 +119,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
-</style>>
+.web-agency {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)), url("../../../assets/projets/web_agency.png");
+	background-attachment: fixed;
+	background-origin: border-box;
+	background-size: cover;
+} 
+
+</style>

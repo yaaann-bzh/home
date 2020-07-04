@@ -3,7 +3,8 @@
         <app-project-template
                 :url="url"
                 :github="github"
-                :gitlab="gitlab">
+                :gitlab="gitlab"
+                :bgClassName="bgClassName">
             <template v-slot:title>
                 Créez un site en personnalisant un thème WordPress
             </template>         
@@ -86,7 +87,8 @@ export default {
         return {
             url: 'https://projet2.yaaann.ovh/',
             github: '',
-            gitlab: ''
+            gitlab: '',
+            bgClassName: 'noumea'
         }
     },
     components: {
@@ -96,5 +98,10 @@ export default {
 </script>
 
 <style>
-
+.noumea {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)), url("../../../assets/projets/noumea.png");
+	background-attachment: fixed;
+	background-origin: border-box;
+	background-size: cover;
+} 
 </style>

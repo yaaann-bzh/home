@@ -3,7 +3,8 @@
         <app-project-template
                 :url="url"
                 :github="github"
-                :gitlab="gitlab">
+                :gitlab="gitlab"
+                :bgClassName="bgClassName">
             <template v-slot:title>
                 Présentez librement un projet personnel
             </template>         
@@ -73,7 +74,8 @@ export default {
         return {
             url: 'http://projet5.yaaann.ovh/',
             github: 'https://github.com/yaaann-bzh/oc-projet-5',
-            gitlab: 'https://gitlab.com/yaaann/oc-projet-5'
+            gitlab: 'https://gitlab.com/yaaann/oc-projet-5',
+            bgClassName: 'yannsjob'
         }
     },
     components: {
@@ -82,6 +84,11 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style>
+.yannsjob {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)), url("../../../assets/projets/yannsjob.png");
+	background-attachment: fixed;
+	background-origin: border-box;
+	background-size: cover;
+} 
 </style>

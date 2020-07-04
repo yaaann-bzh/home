@@ -38,7 +38,7 @@
 			<div class="col-12 col-md-8">
 				<keep-alive>
 					<router-view 
-							class="m-md-2 p-md-2 overflow-auto"
+							class="m-md-2 p-md-2 overflow-auto bg-white rounded"
 							:style="{maxHeight: maxContentHeight}">
 					</router-view>
 				</keep-alive>			
