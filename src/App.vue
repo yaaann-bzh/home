@@ -1,11 +1,9 @@
 <template>
 	<div class="container-fluid position-relative" id="page-content">
 		<app-header></app-header>
-		<div class="container pt-5 pb-5">
+		<div class="container pt-md-5 pb-5" id="main-container">
 			<div class="row">
-				<div class="col-12 col-md-10 offset-md-1">
-					<router-view></router-view>
-				</div>
+				<router-view class="col-12 col-md-10 offset-md-1"></router-view>
 			</div>
 		</div>
 		<app-footer class="row position-absolute w-100"></app-footer>

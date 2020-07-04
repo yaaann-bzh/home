@@ -6,19 +6,7 @@ import Experiences from './components/Experiences.vue';
 const Portfolio = resolve => {
     require.ensure(['./components/portfolio/Portfolio.vue'], () => {
         resolve(require('./components/portfolio/Portfolio.vue'));
-    }, 'portfolio')
-};
-
-const Projects = resolve => {
-    require.ensure(['./components/portfolio/Projects.vue'], () => {
-        resolve(require('./components/portfolio/Projects.vue'));
-    }, 'portfolio')
-};
-
-const Instruction = resolve => {
-    require.ensure(['./components/portfolio/Instruction.vue'], () => {
-        resolve(require('./components/portfolio/Instruction.vue'));
-    }, 'portfolio')
+    })
 };
 
 const error404 = resolve => {
@@ -27,15 +15,14 @@ const error404 = resolve => {
     })
 };
 
+import Projects from './components/portfolio/projects/projects.js'
+
 export const routes = [
     { path: '', component: Home },
     { path: '/competences', component: Skills },
     { path: '/formations', component: Educations },
     { path: '/experiences', component: Experiences },
-    { path: '/portfolio', component: Portfolio, children: [
-        { path: '', component: Projects },
-        { path: ':name', component: Instruction }
-    ] },
+    { path: '/portfolio/', component: Portfolio, children: Projects},
     { path: '/404', component: error404 },
     { path: '*', redirect: '/404' }
 ]
