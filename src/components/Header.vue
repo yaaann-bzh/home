@@ -2,7 +2,7 @@
     <header>
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-success pt-0 pb-0 row">
             <div class="container">
-                <router-link class="navbar-brand" to="/">yaaann</router-link>
+                <router-link class="navbar-brand" to="/"><span @click="isNavbarVisible = false">yaaann</span></router-link>
                 <button 
                         class="navbar-toggler" 
                         type="button" 
