@@ -6,28 +6,28 @@
                 <button 
                         class="navbar-toggler" 
                         type="button" 
-                        @click="isNavbarVisible = !isNavbarVisible">
+                        @click="navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" :class="{show: isNavbarVisible}">
                     <ul class="navbar-nav ml-auto mt-3">
-                        <li class="nav-item">
+                        <li class="nav-item" @click="navbarCollapse">
                             <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top text-nowrap" to="/" active-class="custom-active" exact><font-awesome-icon icon="home" class="mr-2 d-md-none d-lg-inline"/>ACCUEIL</router-link>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" @click="navbarCollapse">
                             <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top" to="/competences" active-class="custom-active">COMPETENCES</router-link>
                         </li>
-                        <li class="nav-item">
-                            <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top" to="/formations" active-class="custom-active">FORMATION</router-link>
+                        <li class="nav-item" @click="navbarCollapse">
+                            <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top" to="/formations" active-class="custom-active" >FORMATION</router-link>
                         </li> 
-                        <li class="nav-item">
+                        <li class="nav-item" @click="navbarCollapse">
                             <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top" to="/experiences" active-class="custom-active">EXPERIENCES</router-link>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item" @click="navbarCollapse">
                             <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top" to="/portfolio" active-class="custom-active">PORTFOLIO</router-link>
                         </li>
-                        <li class="nav-item pl-4 lg-pl-0 pb-lg-3 d-flex">
+                        <li class="nav-item pl-4 lg-pl-0 pb-lg-3 d-flex" @click="navbarCollapse">
                             <a href="https://www.linkedin.com/in/yanntachier/" target="_blank" class="nav-link active mr-3 lg-mr-0"><font-awesome-icon :icon="['fab', 'linkedin-in']"/></a>
                             <a href="https://github.com/yaaann-bzh" target="_blank" class="nav-link active mr-3 lg-mr-0"><font-awesome-icon :icon="['fab', 'github-alt']"/></a>
                             <a href="mailto:yann.tachier@gmail.com" target="_blank" class="nav-link active mr-3 lg-mr-0"><font-awesome-icon :icon="['far', 'envelope']"/></a>
@@ -45,6 +45,11 @@ export default {
     data() {
         return {
             isNavbarVisible: false
+        }
+    },
+    methods: {
+        navbarCollapse() {
+            this.isNavbarVisible = !this.isNavbarVisible
         }
     }
 }
