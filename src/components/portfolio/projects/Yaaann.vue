@@ -4,11 +4,12 @@
                 :url="url"
                 :github="github"
                 :gitlab="gitlab"
-                :bgClassName="bgClassName">
+                :picture="picture">
             <template v-slot:title>
                 Mon site personnel
             </template>         
             <template v-slot:tldr>
+                <p><em>Vous y êtes ;)</em></p>
                 <p>Création d'un site personnel avec portfolio sous Vue.js</p>
                 <p>Formulaire de contact <em>(en cours)</em></p>
             </template>
@@ -40,7 +41,7 @@ export default {
             url: '',
             github: 'https://github.com/yaaann-bzh/home',
             gitlab: '',
-            bgClassName: ''
+            picture: ''
         }
     },
     components: {

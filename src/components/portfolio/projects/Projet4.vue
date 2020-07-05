@@ -4,7 +4,7 @@
                 :url="url"
                 :github="github"
                 :gitlab="gitlab"
-                :bgClassName="bgClassName">
+                :picture="picture">
             <template v-slot:title>
                 Créez un blog pour un écrivain
             </template>         
@@ -57,7 +57,7 @@ export default {
             url: 'http://projet4.yaaann.ovh/',
             github: 'https://github.com/yaaann-bzh/oc-projet-4',
             gitlab: 'https://gitlab.com/yaaann/oc-projet-4',
-            bgClassName: 'forteroche'
+            picture: 'forteroche'
         }
     },
     components: {
@@ -67,10 +67,5 @@ export default {
 </script>
 
 <style>
-.forteroche {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.9)), url("../../../assets/projets/forteroche.png");
-	background-attachment: fixed;
-	background-origin: border-box;
-	background-size: cover;
-} 
+
 </style>
