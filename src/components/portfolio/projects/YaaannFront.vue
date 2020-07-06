@@ -11,7 +11,6 @@
             <template v-slot:tldr>
                 <p><em>Vous y êtes ;)</em></p>
                 <p>Création d'un site personnel avec portfolio sous Vue.js</p>
-                <p>Formulaire de contact <em>(en cours)</em></p>
             </template>
             <template v-slot:instruction>  
                 <div>

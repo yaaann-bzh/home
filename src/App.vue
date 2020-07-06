@@ -1,7 +1,7 @@
 <template>
 	<div class="container-fluid position-relative" id="page-content">
 		<app-header></app-header>
-		<div class="container pt-md-5 pb-5" id="main-container">
+		<div class="container mt-2 mt-md-0 pt-md-5 pb-5" id="main-container">
 			<div class="row">
 				<transition name="slide" type="out-in">
 					<router-view class="col-12 col-md-10 offset-md-1"></router-view>

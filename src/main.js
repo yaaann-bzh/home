@@ -3,12 +3,12 @@ import App from './App.vue'
 import VueRouter from 'vue-router';
 import { routes } from "./routes.js";
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome, faExternalLinkAlt, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faExternalLinkAlt, faArrowCircleRight, faHandPointLeft } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedinIn, faGithubAlt, faCuttlefish, faGitlab, faEarlybirds, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
  
-library.add(faHome, faLinkedinIn, faGithubAlt, faEnvelope, faEarlybirds, faCuttlefish, faExternalLinkAlt, faArrowCircleRight, faGitlab, faGithub)
+library.add(faHome, faLinkedinIn, faGithubAlt, faEnvelope, faEarlybirds, faCuttlefish, faExternalLinkAlt, faArrowCircleRight, faGitlab, faGithub, faHandPointLeft)
  
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
