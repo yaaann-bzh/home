@@ -36,12 +36,14 @@
 
 			</div>
 			<div class="col-12 col-md-8">
-				<keep-alive>
-					<router-view 
-							class="m-md-2 p-md-2 overflow-auto bg-white rounded"
-							:style="{maxHeight: maxContentHeight}">
-					</router-view>
-				</keep-alive>			
+				<transition name="slideup" type="out-in">
+					<keep-alive>
+						<router-view 
+								class="m-md-2 p-md-2 overflow-auto bg-white rounded"
+								:style="{maxHeight: maxContentHeight}">
+						</router-view>
+					</keep-alive>	
+				</transition>		
 			</div>
 		</div>
 	</div>
@@ -93,6 +95,10 @@ export default {
 	},
 	mounted() {
 		this.defineContentHeight();
+		document.body.addClass('overflow-hidden');
+	},
+	beforeDestroy() {
+		document.body.removeClass('overflow-hidden')
 	},
 	methods: {
 		defineContentHeight() {
@@ -110,5 +116,35 @@ export default {
 </script>
 
 <style>
+.slideup-enter-active {
+	animation: slideup-in 300ms ease-out forwards;
+}
+
+.slideup-leave-active {
+	animation: slideup-out 300ms ease-out forwards;
+	position: absolute;
+}
+
+@keyframes slideup-in {
+	from {
+		transform: translateY(200%);
+		opacity: 0;
+	}
+	to {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes slideup-out {
+	from {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	to {
+		transform: translateY(-100%);
+		opacity: 0;
+	}
+}
 
 </style>
