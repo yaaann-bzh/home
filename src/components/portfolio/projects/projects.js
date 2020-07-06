@@ -23,12 +23,16 @@ const Project5 = resolve => {
         resolve(require('./Projet5.vue'));
     })
 };
-const Yaaann = resolve => {
-    require.ensure(['./Yaaann.vue'], () => {
-        resolve(require('./Yaaann.vue'));
+const YaaannFront = resolve => {
+    require.ensure(['./YaaannFront.vue'], () => {
+        resolve(require('./YaaannFront.vue'));
     })
 };
-
+const YaaannBack = resolve => {
+    require.ensure(['./YaaannBack.vue'], () => {
+        resolve(require('./YaaannBack.vue'));
+    })
+};
 
 
 export default [
@@ -38,6 +42,7 @@ export default [
     { path: '/portfolio/projet-3', component: Project3, meta: { title: 'Projet 3 : JavaScript', list: 'oc'} },
     { path: '/portfolio/projet-4', component: Project4, meta: { title: 'Projet 4 : PHP', list: 'oc'} },
     { path: '/portfolio/projet-5', component: Project5, meta: { title: 'Projet 5 : Projet final', list: 'oc'} },
-    { path: '/portfolio/yaaann', component: Yaaann, meta: { title: 'Site personnel', list: 'others'} },
+    { path: '/portfolio/yaaann-front', component: YaaannFront, meta: { title: 'Site personnel (front)', list: 'others'} },
+    { path: '/portfolio/yaaann-back', component: YaaannBack, meta: { title: 'Site personnel (back)', list: 'others'} },
     { path: '/portfolio/*', redirect: '/404'}
 ] 
