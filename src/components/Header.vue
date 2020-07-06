@@ -2,7 +2,11 @@
     <header>
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-success pt-0 pb-0 row" id="main-navbar">
             <div class="container">
-                <router-link class="navbar-brand" to="/"><span @click="isNavbarVisible = false">yaaann</span></router-link>
+                <div class="navbar-brand">
+                    <router-link to="/" role="button" class="btn btn-outline-light"><span @click="isNavbarVisible = false"><font-awesome-icon icon="home" class=""/></span></router-link>
+                    <span> / {{ activeTab }}</span>
+                </div>
+                
                 <button 
                         class="navbar-toggler" 
                         type="button" 
@@ -19,7 +23,7 @@
                             <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top" to="/competences" active-class="custom-active">COMPETENCES</router-link>
                         </li>
                         <li class="nav-item" @click="isNavbarVisible = false">
-                            <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top" to="/formations" active-class="custom-active" >FORMATION</router-link>
+                            <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top" to="/formations" active-class="custom-active">FORMATION</router-link>
                         </li> 
                         <li class="nav-item" @click="isNavbarVisible = false">
                             <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top" to="/experiences" active-class="custom-active">EXPERIENCES</router-link>
@@ -46,6 +50,12 @@ export default {
         return {
             isNavbarVisible: false
         }
+    },
+    computed: {
+        activeTab() {
+            let path = this.$route.path.charAt(1).toUpperCase() + this.$route.path.substring(2)
+            return path.substring(0, path.indexOf('/'));
+        }
     }
 }
 </script>
@@ -59,7 +69,6 @@ export default {
     font-size: 14px;
     letter-spacing: 0.6;
     height: 100%;
-    /* padding: 8px 24px 16px 24px; */
 }
 .custom-active {
     background-color: white;

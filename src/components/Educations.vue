@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<h1 class="h2">Mes formations</h1>
+		<h1 class="h2 d-none d-md-block">Mes formations</h1>
 		<hr>
 		<div class="border rounded-lg p-3 mt-3 mb-3">
 			<h2 class="h4 text-success">Titre RNCP Niveau III (Bac+2) - Développeur Web</h2>

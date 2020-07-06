@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="h2 text-center">Mes compétences</h1>
+        <h1 class="h2 text-center d-none d-md-block">Mes compétences</h1>
 		<hr>
 		<ul class="list-group list-group-flush">
 			<li class="list-group-item">Programmer une application web en <strong>PHP orienté objet</strong></li>

@@ -2,8 +2,8 @@
 	<div>
 		<h3 class="text-center text-md-left"><slot name="title"></slot></h3>
 		<div class="d-flex flex-wrap m-3 align-center">
-			<p class="col-12 col-sm p-0 mt-2 mb-2 text-center text-sm-left">
-				<a :href="url" v-if="url" class="btn btn-primary mt-2" role="button" target="_blank">
+			<p v-if="url" class="col-12 col-sm p-0 mt-2 mb-2 text-center text-sm-left">
+				<a :href="url" class="btn btn-primary mt-2" role="button" target="_blank">
 					Accéder au site
 					<font-awesome-icon :icon="['fas', 'arrow-circle-right']" class="ml-2"/>
 				</a>

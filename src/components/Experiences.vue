@@ -1,6 +1,6 @@
 <template>
   <div>
-        <div class="bg-white card text-center mb-3 p-2"> 
+        <div class="bg-white card text-center mb-3 p-2 d-none d-md-block"> 
             <h1 class="h2">Mes expériences</h1>
         </div>
         <hr>
