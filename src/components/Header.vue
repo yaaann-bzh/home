@@ -3,8 +3,9 @@
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-success pt-0 pb-0 row" id="main-navbar">
             <div class="container">
                 <div class="navbar-brand">
-                    <router-link to="/" role="button" class="btn btn-outline-light"><span @click="isNavbarVisible = false"><font-awesome-icon icon="home" class=""/></span></router-link>
-                    <span> / {{ activeTab }}</span>
+                    <router-link to="/" role="button" class="btn btn-outline-light d-lg-none"><span @click="isNavbarVisible = false"><font-awesome-icon icon="home" class=""/></span></router-link>
+                    <span class="d-lg-none"> / {{ activeTab }}</span>
+                    <router-link to="/" class="d-none d-lg-block text-white">yaaann</router-link>
                 </div>
                 
                 <button 
@@ -54,7 +55,7 @@ export default {
     computed: {
         activeTab() {
             let path = this.$route.path.charAt(1).toUpperCase() + this.$route.path.substring(2)
-            return path.substring(0, path.indexOf('/'));
+            return path.indexOf('/') > 0 ? path.substring(0, path.indexOf('/')) : path;
         }
     }
 }
