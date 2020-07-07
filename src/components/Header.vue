@@ -5,7 +5,7 @@
                 <div class="navbar-brand">
                     <router-link to="/" role="button" class="btn btn-outline-light d-lg-none"><span @click="isNavbarVisible = false"><font-awesome-icon icon="home" class=""/></span></router-link>
                     <span class="d-lg-none"> / {{ activeTab }}</span>
-                    <router-link to="/" class="d-none d-lg-block text-white">yaaann</router-link>
+                    <router-link to="/" class="d-none d-lg-block text-white navbar-brand">yaaann</router-link>
                 </div>
                 
                 <button 
