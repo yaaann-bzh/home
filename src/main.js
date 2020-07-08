@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router';
+import { store } from "./store/store";
 import { routes } from "./routes.js";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHome, faExternalLinkAlt, faArrowCircleRight, faHandPointLeft } from '@fortawesome/free-solid-svg-icons'
@@ -31,6 +32,7 @@ const router = new VueRouter({
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount('#app')
 

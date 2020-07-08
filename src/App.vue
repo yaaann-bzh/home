@@ -16,11 +16,38 @@
 import HeaderVue from './components/Header.vue'
 import FooterVue from './components/Footer.vue'
 
-export default {
-	methods: {
-		changeBackground() {
+import { mapActions } from "vuex";
+import { mapGetters } from "vuex";
 
+export default {
+	created() {
+		this.setActiveTab(this.$route.path);
+		//this.bindPageTitle(this.activeTab);
+	},
+	watch: {
+		'$route' (to) {
+			this.setActiveTab(to.path);
+			//this.bindPageTitle(this.activeTab);
 		}
+	},
+	methods: {
+		...mapActions({
+			setActiveTab: 'setActiveTab'
+		}),
+/* 		bindPageTitle(tab) {
+			let current = document.head.querySelector('title').innerHTML;
+			let splitCarac = ' | ';
+			let title = current.indexOf(splitCarac) < 0 ? current : current.substring(0, current.indexOf(splitCarac));
+			if (tab) {
+				title += splitCarac + tab;
+			}
+			document.head.querySelector('title').innerHTML = title;
+		} */
+	},
+	computed: {
+		...mapGetters([
+			'activeTab',
+		])
 	},
 	components: {
 		appHeader: HeaderVue,

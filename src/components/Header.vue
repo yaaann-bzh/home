@@ -54,8 +54,7 @@ export default {
     },
     computed: {
         activeTab() {
-            let path = this.$route.path.charAt(1).toUpperCase() + this.$route.path.substring(2)
-            return path.indexOf('/') > 0 ? path.substring(0, path.indexOf('/')) : path;
+            return this.$store.getters.activeTab;
         }
     }
 }
