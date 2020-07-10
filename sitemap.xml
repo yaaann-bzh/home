@@ -6,11 +6,65 @@
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 <!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
-
 <url>
   <loc>https://www.yaaann.fr/</loc>
-  <lastmod>2020-07-08T14:59:23+00:00</lastmod>
+  <lastmod>2020-07-10T18:00:00+00:00</lastmod>
+    <priority>1.00</priority>
 </url>
-
+<url>
+  <loc>https://www.yaaann.fr/#/competences</loc>
+  <lastmod>2020-07-10T18:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.yaaann.fr/#/formations</loc>
+  <lastmod>2020-07-10T18:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.yaaann.fr/#/experiences</loc>
+  <lastmod>2020-07-10T18:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.yaaann.fr/#/portfolio/</loc>
+  <lastmod>2020-07-10T18:00:00+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.yaaann.fr/#/portfolio/projet-1</loc>
+  <lastmod>2020-07-10T18:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yaaann.fr/#/portfolio/projet-2</loc>
+  <lastmod>2020-07-10T18:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yaaann.fr/#/portfolio/projet-3</loc>
+  <lastmod>2020-07-10T18:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yaaann.fr/#/portfolio/projet-4</loc>
+  <lastmod>2020-07-10T18:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yaaann.fr/#/portfolio/projet-5</loc>
+  <lastmod>2020-07-10T18:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yaaann.fr/#/portfolio/yaaann-front</loc>
+  <lastmod>2020-07-10T18:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.yaaann.fr/#/portfolio/yaaann-back</loc>
+  <lastmod>2020-07-10T18:00:00+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
 
 </urlset>
