@@ -3,8 +3,8 @@
         <h2 class="h1">Qui suis-je ?</h2>
         <hr>
         <h1 class="h3">Yann Tachier, développeur web front/backend</h1>
-        <p>J'ai tout d'abords travaillé pendant douze ans dans le génie climatique comme technicien en bureau d'étude, 
-            puis j’ai choisi reconversion comme <strong>développeur</strong>. Depuis la fin de ma formation avec <em>OpenClassrooms</em>, 
+        <p>J'ai tout d'abord travaillé pendant douze ans dans le génie climatique comme technicien en bureau d'étude, 
+            puis j’ai entamé une reconversion comme <strong>développeur</strong>. Depuis l'obtention de mon diplôme avec <em>OpenClassrooms</em>, 
             je réalise des missions en freelance dans la création de sites et applications web.</p>
         <hr>
         <div>
