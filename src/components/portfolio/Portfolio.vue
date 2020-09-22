@@ -44,7 +44,7 @@
 							<font-awesome-icon :icon="['fas', 'hand-point-left']" class="mr-2"/>Retour à la liste
 						</button>
 					</div>
-					<transition name="slideup" type="out-in">
+					<transition name="fade" type="out-in">
 						<keep-alive>
 							<router-view 
 									class="m-lg-2 p-lg-2 overflow-auto bg-white rounded"
@@ -200,35 +200,15 @@ export default {
 
 
 @media (min-width: 992px) {
-	.slideup-enter-active {
-		animation: slideup-in 300ms ease-out forwards;
-	}
-
-	.slideup-leave-active {
-		animation: slideup-out 300ms ease-out forwards;
-		position: absolute;
-	}
-}
-
-
-@keyframes slideup-in {
-	from {
-		transform: translateY(200%);
+	.fade-enter {
 		opacity: 0;
 	}
-	to {
-		transform: translateY(0);
-		opacity: 1;
-	}
-}
 
-@keyframes slideup-out {
-	from {
-		transform: translateY(0);
-		opacity: 1;
+	.fade-enter-active {
+		transition: opacity 1s;
 	}
-	to {
-		transform: translateY(-100%);
+
+	.fade-leave-active {
 		opacity: 0;
 	}
 }
