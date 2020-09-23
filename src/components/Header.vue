@@ -31,11 +31,13 @@
                         </li>
                         <li class="nav-item" @click="isNavbarVisible = false">
                             <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top" to="/portfolio" active-class="custom-active">PORTFOLIO</router-link>
+                        </li> 
+                        <li class="nav-item" @click="isNavbarVisible = false">
+                            <router-link class="nav-link active pr-4 pl-4 pb-lg-3 rounded-top" to="/contact" active-class="custom-active">CONTACT</router-link>
                         </li>
                         <li class="nav-item pl-4 lg-pl-0 pb-lg-3 d-flex" @click="isNavbarVisible = false">
                             <a href="https://www.linkedin.com/in/yanntachier/" target="_blank" class="nav-link active mr-3 lg-mr-0"><font-awesome-icon :icon="['fab', 'linkedin-in']"/></a>
                             <a href="https://github.com/yaaann-bzh" target="_blank" class="nav-link active mr-3 lg-mr-0"><font-awesome-icon :icon="['fab', 'github-alt']"/></a>
-                            <a href="mailto:yann.tachier@gmail.com" target="_blank" class="nav-link active mr-3 lg-mr-0"><font-awesome-icon :icon="['far', 'envelope']"/></a>
                         </li>
                     </ul>
                 </div>

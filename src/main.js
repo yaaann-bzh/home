@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router';
+import axios from 'axios';
 import { store } from "./store/store";
 import { routes } from "./routes.js";
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -17,22 +18,25 @@ Vue.config.productionTip = false
 
 Vue.use(VueRouter);
 
+axios.defaults.baseURL = 'https://back.yaaann.fr/index.php/';
+axios.defaults.headers.get['Accepts'] = 'application/json';
+
 const router = new VueRouter({
 	//mode: 'history',
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
-			return savedPosition;
-    }
-    if (to.hash) {
-			return { selector: to.hash };
+	routes,
+	scrollBehavior(to, from, savedPosition) {
+		if (savedPosition) {
+				return savedPosition;
 		}
-  }
+		if (to.hash) {
+				return { selector: to.hash };
+			}
+	}
 })
 
 new Vue({
-  render: h => h(App),
-  router,
-  store
+	render: h => h(App),
+	router,
+	store
 }).$mount('#app')
 

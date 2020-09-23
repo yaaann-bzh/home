@@ -2,6 +2,7 @@ import Home from './components/Home.vue';
 import Skills from './components/Skills.vue';
 import Educations from './components/Educations.vue';
 import Experiences from './components/Experiences.vue';
+import Contact from './components/Contact.vue';
 
 const Portfolio = resolve => {
     require.ensure(['./components/portfolio/Portfolio.vue'], () => {
@@ -23,6 +24,7 @@ export const routes = [
     { path: '/formations', component: Educations },
     { path: '/experiences', component: Experiences },
     { path: '/portfolio/', component: Portfolio, children: Projects},
+    { path: '/contact', component: Contact },
     { path: '/404', component: error404 },
     { path: '*', redirect: '/404' }
 ]
