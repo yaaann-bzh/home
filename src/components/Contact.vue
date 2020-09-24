@@ -7,7 +7,7 @@
             Je vous répondrai dans les meilleurs délais.
         </p>
         <validation-observer v-slot="{ handleSubmit }" tag="div" class="row">
-            <form class="col-12 col-md-8 offset-md-2 mb-5" @submit.prevent="handleSubmit(onSubmit)">
+            <form class="col-12 col-md-8 offset-md-2 mb-5" @submit.prevent="handleSubmit(onSubmit)" v-if="!sendingSuccess">
                 <div class="form-group">
                     <label for="fullname">Votre nom :</label>
                     <validation-provider mode="lazy" rules="required|maxLength:50" v-slot="{ errors }">
@@ -39,10 +39,21 @@
                         <small class="form-text text-danger">{{ errors[0] }}</small>
                     </validation-provider>
                 </div>
-                <button type="submit" class="btn btn-primary">
-                    <font-awesome-icon :icon="['far', 'envelope']"/> Envoyer
+                <div class="alert alert-danger text-center" role="alert" v-if="sendingError && !isLoading">
+                    {{ sendingError }}
+                </div>
+                <button type="submit" class="btn btn-primary" :disabled="isLoading">
+                    <span v-if="!isLoading">
+                        <font-awesome-icon :icon="['far', 'envelope']"/> Envoyer
+                    </span>
+                    <span v-else>
+                        <font-awesome-icon :icon="['fas', 'hourglass-half']"/> Envoi en cours
+                    </span>
                 </button>
             </form>
+            <div v-else class="col-12 col-md-8 offset-md-2 mb-5 alert alert-success text-center lead">
+                Le message a bien été envoyé ! Merci
+            </div>
         </validation-observer>
     </div>
 </template>
@@ -59,7 +70,10 @@ export default {
             fullname: 'test',
             email: 'test@test.org',
             object: 'test',
-            content:'Message de test de 20 caractère mini'
+            content:'Message de test de 20 caractère mini',
+            isLoading: false,
+            sendingSuccess: false,
+            sendingError: null
         }
     },
     components: {
@@ -74,26 +88,34 @@ export default {
     },
     methods: {
         onSubmit() {
+            this.isLoading = true;
             const url = this.baseUrl + 'contact?apikey=' + this.contactApiKey;
-            console.log(url);
-            const formData = {
-                    fullname: this.fullname,
-                    email: this.email,
-                    object: this.object,
-                    content: this.content
-                }
 
             fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify({
+                    fullname: this.fullname,
+                    email: this.email,
+                    object: this.object,
+                    content: this.content
+                })
             })
                 .then((response) => {
-                    console.log(response);
+                    this.isLoading = false;
+                    if (response.ok) {
+                        this.sendingError = null;
+                        this.sendingSuccess = true;
+                    } else {
+                        this.sendingError = 'Désolé, le serveur à rencontré une erreur. Merci de réessayer ultérieurement.';
+                    }
                 })
-                .catch(error => console.error(error));
+                .catch(() => {
+                    this.isLoading = false;
+                    this.sendingError = 'Désolé, quelque chose s\'est mal passé. Merci de réessayer plus tard.';
+                });
         }
     },
     beforeMount() {

@@ -9,7 +9,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         baseUrl: 'https://back.yaaann.fr/index.php/'
-    },
+/*         baseUrl: 'http://yaaannback.localhost/index.php/'
+ */    },
     actions: {
     },
     modules: {
