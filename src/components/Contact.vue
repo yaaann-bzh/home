@@ -50,23 +50,50 @@
 <script>
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 import { required, email } from "vee-validate/dist/rules";
-
+import { mapGetters } from "vuex";
+/* import axios from 'axios';
+ */
 export default {
     data () {
         return {
-            fullname: '',
-            email: '',
-            object: '',
-            content:''
+            fullname: 'test',
+            email: 'test@test.org',
+            object: 'test',
+            content:'Message de test de 20 caractère mini'
         }
     },
     components: {
         'validation-provider': ValidationProvider,
         'validation-observer': ValidationObserver
     },
+    computed: {
+        ...mapGetters({
+            baseUrl: 'baseUrl',
+            contactApiKey: 'contactApiKey'
+        })
+    },
     methods: {
         onSubmit() {
-            console.log('Form submit');
+            const url = this.baseUrl + 'contact?apikey=' + this.contactApiKey;
+            console.log(url);
+            const formData = {
+                    fullname: this.fullname,
+                    email: this.email,
+                    object: this.object,
+                    content: this.content
+                }
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch(error => console.error(error));
         }
     },
     beforeMount() {

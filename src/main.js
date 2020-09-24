@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router';
-import axios from 'axios';
-import { store } from "./store/store";
+import store from "./store/store";
 import { routes } from "./routes.js";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHome, faExternalLinkAlt, faArrowCircleRight, faHandPointLeft } from '@fortawesome/free-solid-svg-icons'
@@ -17,9 +16,6 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
 Vue.use(VueRouter);
-
-axios.defaults.baseURL = 'https://back.yaaann.fr/index.php/';
-axios.defaults.headers.get['Accepts'] = 'application/json';
 
 const router = new VueRouter({
 	//mode: 'history',

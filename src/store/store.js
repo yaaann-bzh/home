@@ -1,12 +1,23 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+//import axios from 'axios';
 
-import metaData from "./modules/meta.js";
+import secretKeys from "./modules/secret_keys.js";
 
 Vue.use(Vuex);
 
-export const store = new Vuex.Store({
+export default new Vuex.Store({
+    state: {
+        baseUrl: 'https://back.yaaann.fr/index.php/'
+    },
+    actions: {
+    },
     modules: {
-        metaData: metaData
+        secretKeys
+    },
+    getters: {
+        baseUrl(state) {
+            return state.baseUrl;
+        }
     }
 })
