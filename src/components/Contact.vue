@@ -7,53 +7,57 @@
             Je vous répondrai dans les meilleurs délais.
         </p>
         <validation-observer v-slot="{ handleSubmit }" tag="div" class="row">
-            <form class="col-12 col-md-8 offset-md-2 mb-5" @submit.prevent="handleSubmit(onSubmit)" v-if="!sendingSuccess">
-                <div class="form-group">
-                    <label for="fullname">Votre nom :</label>
-                    <validation-provider mode="lazy" rules="required|maxLength:50" v-slot="{ errors }">
-                        <input type="text" class="form-control" id="fullname" v-model.trim="fullname" :class="{invalid: errors[0]}">
-                        <small class="form-text text-danger">{{ errors[0] }}</small>
-                    </validation-provider>
-                </div>
-                <div class="form-group">
-                    <label for="email">Votre email :</label>
-                    <validation-provider mode="lazy" rules="required|email|maxLength:50" v-slot="{ errors }">
-                        <input type="email" class="form-control" id="email" v-model.trim="email" :class="{invalid: errors[0]}">
-                        <small class="form-text text-danger">{{ errors[0] }}</small>
-                    </validation-provider>
-                </div>
-                <div class="form-group">
-                    <label for="object">Objet de votre message :</label>
-                    <validation-provider mode="lazy" rules="required|maxLength:50" v-slot="{ errors }">
-                        <input type="text" class="form-control" id="object"  v-model.trim="object" :class="{invalid: errors[0]}">
-                        <small class="form-text text-danger">{{ errors[0] }}</small>
-                    </validation-provider>
+            <transition name="fade">
+                <form class="col-12 col-md-8 offset-md-2 mb-5" @submit.prevent="handleSubmit(onSubmit)" v-if="!sendingSuccess">
+                    <div class="form-group">
+                        <label for="fullname">Votre nom :</label>
+                        <validation-provider mode="lazy" rules="required|maxLength:50" v-slot="{ errors }">
+                            <input type="text" class="form-control" id="fullname" v-model.trim="fullname" :class="{invalid: errors[0]}">
+                            <small class="form-text text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
                     </div>
-                <div class="form-group">
-                    <label for="content">Message :</label>
-                    <validation-provider mode="lazy" rules="required|content:20,500" v-slot="{ errors }">
-                        <textarea class="form-control" id="content" rows="5" v-model.trim="content" :class="{invalid: errors[0]}"></textarea>
-                        <small class="form-text text-muted">
-                            {{ content.length }} / 500
-                        </small>                        
-                        <small class="form-text text-danger">{{ errors[0] }}</small>
-                    </validation-provider>
+                    <div class="form-group">
+                        <label for="email">Votre email :</label>
+                        <validation-provider mode="lazy" rules="required|email|maxLength:50" v-slot="{ errors }">
+                            <input type="email" class="form-control" id="email" v-model.trim="email" :class="{invalid: errors[0]}">
+                            <small class="form-text text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                    </div>
+                    <div class="form-group">
+                        <label for="object">Objet de votre message :</label>
+                        <validation-provider mode="lazy" rules="required|maxLength:50" v-slot="{ errors }">
+                            <input type="text" class="form-control" id="object"  v-model.trim="object" :class="{invalid: errors[0]}">
+                            <small class="form-text text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                        </div>
+                    <div class="form-group">
+                        <label for="content">Message :</label>
+                        <validation-provider mode="lazy" rules="required|content:20,500" v-slot="{ errors }">
+                            <textarea class="form-control" id="content" rows="5" v-model.trim="content" :class="{invalid: errors[0]}"></textarea>
+                            <small class="form-text text-muted">
+                                {{ content.length }} / 500
+                            </small>                        
+                            <small class="form-text text-danger">{{ errors[0] }}</small>
+                        </validation-provider>
+                    </div>
+                    <transition name="fade">
+                        <div class="alert alert-danger text-center" role="alert" v-if="sendingError && !isLoading">
+                            {{ sendingError }}
+                        </div>
+                    </transition>
+                    <button type="submit" class="btn btn-primary" :disabled="isLoading">
+                        <span v-if="!isLoading">
+                            <font-awesome-icon :icon="['far', 'envelope']"/> Envoyer
+                        </span>
+                        <span v-else>
+                            <font-awesome-icon :icon="['fas', 'hourglass-end']" class="hourglass"/> Envoi...
+                        </span>
+                    </button>
+                </form>
+                <div v-else class="col-12 col-md-8 offset-md-2 mb-5 alert alert-success text-center lead">
+                    Le message a bien été envoyé ! Merci
                 </div>
-                <div class="alert alert-danger text-center" role="alert" v-if="sendingError && !isLoading">
-                    {{ sendingError }}
-                </div>
-                <button type="submit" class="btn btn-primary" :disabled="isLoading">
-                    <span v-if="!isLoading">
-                        <font-awesome-icon :icon="['far', 'envelope']"/> Envoyer
-                    </span>
-                    <span v-else>
-                        <font-awesome-icon :icon="['fas', 'hourglass-half']"/> Envoi en cours
-                    </span>
-                </button>
-            </form>
-            <div v-else class="col-12 col-md-8 offset-md-2 mb-5 alert alert-success text-center lead">
-                Le message a bien été envoyé ! Merci
-            </div>
+            </transition>
         </validation-observer>
     </div>
 </template>
@@ -67,10 +71,10 @@ import { mapGetters } from "vuex";
 export default {
     data () {
         return {
-            fullname: 'test',
-            email: 'test@test.org',
-            object: 'test',
-            content:'Message de test de 20 caractère mini',
+            fullname: '',
+            email: '',
+            object: '',
+            content:'',
             isLoading: false,
             sendingSuccess: false,
             sendingError: null
@@ -89,9 +93,9 @@ export default {
     methods: {
         onSubmit() {
             this.isLoading = true;
-            const url = this.baseUrl + 'contact?apikey=' + this.contactApiKey;
+           const url = this.baseUrl + 'contact?apikey=' + this.contactApiKey;
 
-            fetch(url, {
+             fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -151,4 +155,35 @@ export default {
 		border: 1px solid red;
 		background-color: #ffc9aa;
 	}
+
+    .fade-enter {
+		opacity: 0;
+	}
+
+	.fade-enter-active {
+		transition: opacity 500ms 500ms;
+	}
+
+	.fade-leave-active {
+        transition: opacity 500ms;
+		opacity: 0;
+	}
+
+    .fade-move {
+		transition: transform 500ms;
+	}
+
+    .hourglass {
+        animation: 1.5s linear 0.5s infinite backwards running hourglass-rotation;
+        margin-right: 5px;
+    }
+
+    @keyframes hourglass-rotation {
+        from { transform: rotate(0); }
+        25% { transform: rotate(45deg); }
+        50% { transform: rotate(90deg); }
+        75% { transform: rotate(135deg); }
+        90% { transform: rotate(180deg); }
+        to { transform: rotate(180deg); }
+    }
 </style>

@@ -4,12 +4,12 @@ import VueRouter from 'vue-router';
 import store from "./store/store";
 import { routes } from "./routes.js";
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faHome, faExternalLinkAlt, faArrowCircleRight, faHandPointLeft, faHourglassHalf } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faExternalLinkAlt, faArrowCircleRight, faHandPointLeft, faHourglassHalf, faHourglassEnd } from '@fortawesome/free-solid-svg-icons'
 import { faLinkedinIn, faGithubAlt, faCuttlefish, faGitlab, faEarlybirds, faGithub } from '@fortawesome/free-brands-svg-icons'
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
  
-library.add(faHome, faLinkedinIn, faGithubAlt, faEnvelope, faEarlybirds, faCuttlefish, faExternalLinkAlt, faArrowCircleRight, faGitlab, faGithub, faHandPointLeft, faHourglassHalf)
+library.add(faHome, faLinkedinIn, faGithubAlt, faEnvelope, faEarlybirds, faCuttlefish, faExternalLinkAlt, faArrowCircleRight, faGitlab, faGithub, faHandPointLeft, faHourglassEnd, faHourglassHalf)
  
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
