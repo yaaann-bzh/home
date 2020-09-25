@@ -6,7 +6,7 @@
                 :gitlab="gitlab"
                 :picture="picture">
             <template v-slot:title>
-                Mon site personnel (front)
+                Mon site personnel (frontend)
             </template>         
             <template v-slot:tldr>
                 <p><em>Vous y êtes ;)</em></p>
@@ -19,9 +19,20 @@
                         <li>Site construit avec Vue-CLI</li>
                         <li>Utilisation de Vue-router pour la navigation</li>
                         <li>Mise en forme avec Bootstrap</li>
+                        <li>Validation des formulaire avec <a href="https://logaretm.github.io/vee-validate/">VeeValidate</a></li>
                         <li>
-                            Requêtes HTTP avec Vue-resource <br>
-                            <em>Pour plus d'information sur le back-end, c'est <router-link to="./yaaann-back" tag="a">ici</router-link> !</em>
+                            Requêtes HTTP vers une API Symfony pour le Back-end :
+                            <ul>
+                                <li>Envoi des messages de contact</li>
+                                <li>
+                                    <em>
+                                        (en projet) Système CRUD avec authentification par mot de passe pour l'ajout de projets à 
+                                        mon portfolio avec persistance en base de données. <br>
+                                        Les projets seront récupérés depuis la DB pour être affichés.
+                                    </em>
+                                </li>
+                            </ul>
+                            <em>Pour plus d'information sur le back-end, <router-link to="./yaaann-back" tag="a">c'est ici</router-link> !</em>
                         </li>
                     </ul>
                 </div>

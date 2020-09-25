@@ -42,7 +42,7 @@ export default [
     { path: '/portfolio/projet-3', component: Project3, meta: { title: 'Projet 3 : JavaScript', list: 'oc'} },
     { path: '/portfolio/projet-4', component: Project4, meta: { title: 'Projet 4 : PHP', list: 'oc'} },
     { path: '/portfolio/projet-5', component: Project5, meta: { title: 'Projet 5 : Projet final', list: 'oc'} },
-    { path: '/portfolio/yaaann-front', component: YaaannFront, meta: { title: 'Site personnel (front)', list: 'others'} },
-    { path: '/portfolio/yaaann-back', component: YaaannBack, meta: { title: 'Site personnel (back)', list: 'others'} },
+    { path: '/portfolio/yaaann-front', component: YaaannFront, meta: { title: 'Site personnel frontend', list: 'others'} },
+    { path: '/portfolio/yaaann-back', component: YaaannBack, meta: { title: 'Site personnel backend', list: 'others'} },
     { path: '/portfolio/*', redirect: '/404'}
 ] 
