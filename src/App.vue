@@ -3,7 +3,7 @@
 		<app-header></app-header>
 		<div class="container mt-2 mt-md-0 pt-md-5 pb-5" id="main-container">
 			<div class="row">
-				<transition name="slide" type="out-in">
+				<transition name="app-slide" type="out-in">
 					<router-view class="col-12 col-md-10 offset-md-1"></router-view>
 				</transition>
 			</div>
@@ -15,8 +15,27 @@
 <script>
 import HeaderVue from './components/Header.vue'
 import FooterVue from './components/Footer.vue'
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
+	created() {
+		this.setActiveTab(this.$route.path);
+	},
+	watch: {
+		'$route' (to) {
+			this.setActiveTab(to.path);
+		}
+	},
+	methods: {
+		...mapActions({
+			setActiveTab: 'setActiveTab'
+		})
+	},
+	computed: {
+		...mapGetters([
+			'activeTab',
+		])
+	},
 	components: {
 		appHeader: HeaderVue,
 		appFooter: FooterVue
@@ -48,16 +67,16 @@ hr{
 	background-color: #28a745 !important;
 }
 
-.slide-enter-active {
-	animation: slide-in 1s ease-out forwards;
+.app-slide-enter-active {
+	animation: app-slide-in 1s ease-out forwards;
 }
 
-.slide-leave-active {
-	animation: slide-out 1s ease-out forwards;
+.app-slide-leave-active {
+	animation: app-slide-out 1s ease-out forwards;
 	position: absolute;
 }
 
-@keyframes slide-in {
+@keyframes app-slide-in {
 	from {
 		transform: translateX(200%);
 		opacity: 0;
@@ -68,7 +87,7 @@ hr{
 	}
 }
 
-@keyframes slide-out {
+@keyframes app-slide-out {
 	from {
 		transform: translateX(0);
 		opacity: 1;
