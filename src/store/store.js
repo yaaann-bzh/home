@@ -4,6 +4,7 @@ import Vuex from 'vuex';
 
 import secretKeys from "./modules/secret_keys.js";
 import user from "./modules/user.js"
+import projects from "./modules/projects.js"
 
 Vue.use(Vuex);
 
@@ -15,7 +16,6 @@ export default new Vuex.Store({
  */    },
     mutations: {
         'SET_ACTIVE_TAB' (state, path) {
-            console.log('test');
             let activeTab = path.charAt(1).toUpperCase() + path.substring(2)
             state.activeTab = activeTab.indexOf('/') > 0 ? activeTab.substring(0, activeTab.indexOf('/')) : activeTab;
         }
@@ -27,7 +27,8 @@ export default new Vuex.Store({
     },
     modules: {
         secretKeys,
-        user
+        user,
+        projects
     },
     getters: {
         activeTab: state => {

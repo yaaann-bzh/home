@@ -99,11 +99,6 @@ export default {
         activeTab() {
             return this.$store.getters.activeTab;
         }
-    },
-    watch: {
-        isAdminVisible: function (value) {
-            console.log(value);
-        }
     }
 }
 </script>

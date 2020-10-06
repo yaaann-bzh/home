@@ -24,9 +24,9 @@
                         </validation-provider>
                     </div>
                     <div class="form-group">
-                        <label for="object">Objet de votre message :</label>
+                        <label for="subject">Objet de votre message :</label>
                         <validation-provider mode="lazy" rules="required|maxLength:50" v-slot="{ errors }">
-                            <input type="text" class="form-control" id="object"  v-model.trim="object" :class="{invalid: errors[0]}">
+                            <input type="text" class="form-control" id="subject"  v-model.trim="subject" :class="{invalid: errors[0]}">
                             <small class="form-text text-danger">{{ errors[0] }}</small>
                         </validation-provider>
                         </div>
@@ -40,19 +40,7 @@
                             <small class="form-text text-danger">{{ errors[0] }}</small>
                         </validation-provider>
                     </div>
-                    <transition name="fade">
-                        <div class="alert alert-danger text-center" role="alert" v-if="sendingError && !isLoading">
-                            {{ sendingError }}
-                        </div>
-                    </transition>
-                    <button type="submit" class="btn btn-primary" :disabled="isLoading">
-                        <span v-if="!isLoading">
-                            <font-awesome-icon :icon="['far', 'envelope']"/> Envoyer
-                        </span>
-                        <span v-else>
-                            <font-awesome-icon :icon="['fas', 'hourglass-end']" class="hourglass"/> Envoi...
-                        </span>
-                    </button>
+                <submit-button :error="sendingError" :isLoading="isLoading"></submit-button>
                 </form>
                 <div v-else class="col-12 col-md-8 offset-md-2 mb-5 alert alert-success text-center lead">
                     Le message a bien été envoyé ! Merci
@@ -66,13 +54,14 @@
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 import { required, email } from "vee-validate/dist/rules";
 import { mapGetters } from "vuex";
+import submitVue from './form/submit.vue';
 
 export default {
     data () {
         return {
             fullname: '',
             email: '',
-            object: '',
+            subject: '',
             content:'',
             isLoading: false,
             sendingSuccess: false,
@@ -81,7 +70,8 @@ export default {
     },
     components: {
         'validation-provider': ValidationProvider,
-        'validation-observer': ValidationObserver
+        'validation-observer': ValidationObserver,
+        'submit-button': submitVue
     },
     computed: {
         ...mapGetters({
@@ -92,9 +82,9 @@ export default {
     methods: {
         onSubmit() {
             this.isLoading = true;
-           const url = this.baseUrl + 'contact?apikey=' + this.contactApiKey;
+            const url = this.baseUrl + 'contact?apikey=' + this.contactApiKey;
 
-             fetch(url, {
+            fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -102,7 +92,7 @@ export default {
                 body: JSON.stringify({
                     fullname: this.fullname,
                     email: this.email,
-                    object: this.object,
+                    subject: this.subject,
                     content: this.content
                 })
             })
@@ -171,18 +161,4 @@ export default {
     .fade-move {
 		transition: transform 500ms;
 	}
-
-    .hourglass {
-        animation: 1.5s linear 0.5s infinite backwards running hourglass-rotation;
-        margin-right: 5px;
-    }
-
-    @keyframes hourglass-rotation {
-        from { transform: rotate(0); }
-        25% { transform: rotate(45deg); }
-        50% { transform: rotate(90deg); }
-        75% { transform: rotate(135deg); }
-        90% { transform: rotate(180deg); }
-        to { transform: rotate(180deg); }
-    }
 </style>

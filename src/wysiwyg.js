@@ -4,9 +4,9 @@ export const config = {
         "table": true,
         "removeFormat": true
     },
-    image: {
+/*     image: {
         uploadURL: "",// TODO
         dropzoneOptions: {}
-    },
+    }, */
     forcePlainTextOnPaste: true,
 }

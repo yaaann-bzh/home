@@ -17,7 +17,13 @@ const Portfolio = resolve => {
 const Admin = resolve => {
     require.ensure(['./components/admin/Admin.vue'], () => {
         resolve(require('./components/admin/Admin.vue'));
-    })
+    }, 'administration')
+}
+
+const ProjectAdd = resolve => {
+    require.ensure(['./components/admin/ProjectAdd.vue'], () => {
+        resolve(require('./components/admin/ProjectAdd.vue'));
+    }, 'administration')
 }
 
 const error404 = resolve => {
@@ -39,10 +45,14 @@ const routes = [
     { path: '/contact', component: Contact, name: 'contact' },
     { path: '/login', redirect: { name: 'admin' }, name: 'login' },
     { path: '/admin/', component: Admin, name: 'admin', children: [
-        { path: 'projects', component: null , name: 'projectsList' },
-        { path: 'projects/add', component: null , name: 'projectsAdd' },
-        { path: 'projects/edit/:id', component: null, name: 'projectsEdit' },
-        { path: 'projects/delete/:id', component: null, name: 'projectsDelete' }
+        { path: 'projects/list', component: null , name: 'projectsList' },
+        { path: 'projects/add', component: ProjectAdd , name: 'projectsAdd' },
+        { path: 'projects/edit', component: null, name: 'projectsToEdit', children: [
+            { path: '/:id', component: null, name: 'projectEdit' }
+        ]},
+        { path: 'projects/delete', component: null, name: 'projectsToDelete', children: [
+            { path: '/:id', component: null, name: 'projectsDelete' }
+        ]}
     ], beforeEnter: (to, from, next) => {
         console.log('Throw BeforeEnter from "' + from.path + '" to "' + to.path + '"');
         next();
