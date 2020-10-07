@@ -22,25 +22,19 @@ const mutations = {
 const actions = {
 	setLogoutTimer(context, expirationDate) {
 		const expirationTime = expirationDate - new Date();
-		let timeLeft = expirationTime / 1000;
-
-		let countDown = setInterval(() => {
-			timeLeft = timeLeft - 1;
-		}, 1000);
-
+		
+		let timeLeft = expirationTime / 10000;
 		/* let autoLogout =  */setTimeout(() => {
-			clearInterval(countDown);
 			context.dispatch('logout');
 		}, expirationTime)
 
 		setTimeout(() => {
-			if (confirm('Vous allez être déconnecté.e dans ' + timeLeft + ' secondes.\nRafraîchir la connection ?')) {
-				clearInterval(countDown);
+			if (confirm('Vous allez être déconnecté.e dans ' + timeLeft + ' secondes.\n\nRafraîchir la connection ?\n')) {
 				/* clearTimeout(autoLogout);
 				context.dispatch.refreshToken(); */
-				alert('Cette fonction n\'est pas encore implémentée...\nDésolé, vous allez être déconnecté.e')
+				alert('Cette fonction n\'est pas encore implémentée...\n\nDésolé, vous allez être déconnecté.e\n')
 			}
-		}, expirationTime * 0.5);
+		}, expirationTime - timeLeft);
 	},
 	async login(context, authData) {
 		const url = context.getters.baseUrl + 'api/login_check';
