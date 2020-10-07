@@ -15,6 +15,7 @@ const mutations = {
 	'CLEAR_AUTH_USER' (state) {
 		state.idToken = null;
 		state.userId = null;
+		state.expirationDate = null;
 	}
 }
 

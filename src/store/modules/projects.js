@@ -2,13 +2,16 @@
 
 const state = {
     projectCathegories: [],
-    projectsList: {},
+    projectList: [],
     projects: {}
 }
 
 const mutations = {
     setCathegories(state, payload) {
         state.projectCathegories = payload;
+    },
+    setProjectList(state, payload) {
+        state.projectList = payload;
     }
 }
 
@@ -58,12 +61,31 @@ const actions = {
         }
 
         return responseData.id;
+    },
+    async fetchProjectList(context) {
+/*         if (context.getters.projectList.lentgh > 0) {
+            return;
+        } */
+        const url = context.getters.baseUrl + 'api/cathegories-detail';
+
+        const response = await fetch(url);
+        const responseData = await response.json();
+
+        if (!response.ok) {
+            const error = new Error(responseData.message || 'Failed to fetch!');
+            throw error;
+        }
+
+        context.commit('setProjectList', responseData);
     }
 }
 
 const getters = {
     projectCathegories(state) {
         return state.projectCathegories;
+    },
+    projectList(state) {
+        return state.projectList;
     }
 }
 

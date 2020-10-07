@@ -26,6 +26,12 @@ const Admin = resolve => {
     }, 'administration')
 }
 
+const ProjectList = resolve => {
+    require.ensure(['./components/admin/ProjectList.vue'], () => {
+        resolve(require('./components/admin/ProjectList.vue'));
+    }, 'administration')
+}
+
 const ProjectAdd = resolve => {
     require.ensure(['./components/admin/ProjectAdd.vue'], () => {
         resolve(require('./components/admin/ProjectAdd.vue'));
@@ -51,14 +57,11 @@ const routes = [
     { path: '/contact', component: Contact, name: 'contact' },
     { path: '/login', component: Login , name: 'login' },
     { path: '/admin/', component: Admin, name: 'admin', children: [
-        { path: 'projects/list', component: null , name: 'projectsList' },
-        { path: 'projects/add', component: ProjectAdd , name: 'projectsAdd' },
-        { path: 'projects/edit', component: null, name: 'projectsToEdit', children: [
-            { path: '/:id', component: null, name: 'projectEdit' }
+        { path: 'projects/', component: ProjectList , name: 'projectList', children: [
+            { path: 'edit/:id', component: null, name: 'projectEdit' },
+            { path: 'delete/:id', component: null, name: 'projectDelete' }
         ]},
-        { path: 'projects/delete', component: null, name: 'projectsToDelete', children: [
-            { path: '/:id', component: null, name: 'projectsDelete' }
-        ]}
+        { path: 'project/add', component: ProjectAdd , name: 'projectAdd' }
     ], beforeEnter: (to, from, next) => {
         if (!store.getters.isAuthenticated) {
             next({ name: 'login' });

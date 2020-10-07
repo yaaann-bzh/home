@@ -27,10 +27,8 @@ export default {
 				projects: {
 					title: 'Projets :',
 					li: [
-						['Liste', 'projectsList'],
-						['Ajouter', 'projectsAdd'],
-						['Modifier', 'projectsToEdit'],
-						['Supprimer', 'projectsToDelete']
+						['Liste', 'projectList'],
+						['Ajouter', 'projectAdd']
 					]
 				},
 /* 				test: {
@@ -50,13 +48,5 @@ export default {
 </script>
 
 <style>
-.custom-link {
-	padding: 0.75rem 1.25rem;
-	cursor: pointer;
-	color: rgb(73, 80, 87);
-}
-.custom-active-link {
-	background-color: rgb(195, 230, 203);
-	color: rgb(21, 87, 36);
-}
+
 </style>

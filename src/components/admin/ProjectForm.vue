@@ -80,7 +80,7 @@
         </form>
         <div v-else class="col-12 col-md-8 offset-md-2 mb-5 alert alert-success text-center lead">
             {{ successMessage }} -> 
-            <router-link :to="{name: 'portfolio', params: { projectId: newProjectId }}">voir</router-link>
+            <router-link :to="{name: 'projectShow', params: { id: newProjectId }}">voir</router-link>
             <br>
             ou 
             <a href="#" role="button" @click="sendingSuccess = false">Ajouter un autre projet</a>

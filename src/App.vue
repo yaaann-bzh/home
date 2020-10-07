@@ -102,4 +102,14 @@ input.invalid, textarea.invalid, select.invalid{
 		border: 1px solid red;
 		background-color: #ffc9aa;
 	}
+
+.custom-link {
+	padding: 0.75rem 1.25rem;
+	cursor: pointer;
+	color: rgb(73, 80, 87);
+}
+.custom-active-link {
+	background-color: rgb(195, 230, 203);
+	color: rgb(21, 87, 36);
+}
 </style>
