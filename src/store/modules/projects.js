@@ -32,7 +32,7 @@ const actions = {
     async addProject(context, project) {
         const idToken = context.getters.idToken
         if (!idToken) {
-            return;
+            throw new Error('Vous devez être authentifié pour faire cela.')
         }
         
         const url = context.getters.baseUrl + 'api/admin/projects';

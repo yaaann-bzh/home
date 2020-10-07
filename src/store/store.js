@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-//import axios from 'axios';
 
 import secretKeys from "./modules/secret_keys.js";
 import user from "./modules/user.js"

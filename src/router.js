@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-/* import store from './store'
- */
+import store from './store/store.js'
+
 import Home from './components/Home.vue';
 import Skills from './components/Skills.vue';
 import Educations from './components/Educations.vue';
@@ -13,6 +13,12 @@ const Portfolio = resolve => {
         resolve(require('./components/portfolio/Portfolio.vue'));
     })
 };
+
+const Login = resolve => {
+    require.ensure(['./components/admin/Login.vue'], () => {
+        resolve(require('./components/admin/Login.vue'));
+    })
+}
 
 const Admin = resolve => {
     require.ensure(['./components/admin/Admin.vue'], () => {
@@ -43,7 +49,7 @@ const routes = [
     { path: '/experiences', component: Experiences, name: 'experiences' },
     { path: '/portfolio/', component: Portfolio, name: 'portfolio', children: Projects},
     { path: '/contact', component: Contact, name: 'contact' },
-    { path: '/login', redirect: { name: 'admin' }, name: 'login' },
+    { path: '/login', component: Login , name: 'login' },
     { path: '/admin/', component: Admin, name: 'admin', children: [
         { path: 'projects/list', component: null , name: 'projectsList' },
         { path: 'projects/add', component: ProjectAdd , name: 'projectsAdd' },
@@ -54,7 +60,9 @@ const routes = [
             { path: '/:id', component: null, name: 'projectsDelete' }
         ]}
     ], beforeEnter: (to, from, next) => {
-        console.log('Throw BeforeEnter from "' + from.path + '" to "' + to.path + '"');
+        if (!store.getters.isAuthenticated) {
+            next({ name: 'login' });
+        }
         next();
     }},
     { path: '/404', component: error404 },

@@ -6,11 +6,12 @@
 			</div>
 		</transition>
 		<button type="submit" class="btn btn-primary" :disabled="isLoading">
-			<span v-if="!isLoading">
-				<font-awesome-icon :icon="['far', 'envelope']"/> Envoyer
-			</span>
+			<slot name="text" v-if="!isLoading">
+				Envoyer
+			</slot>
 			<span v-else>
-				<font-awesome-icon :icon="['fas', 'hourglass-end']" class="hourglass"/> Envoi...
+				<font-awesome-icon :icon="['fas', 'hourglass-end']" class="hourglass"/>
+				<slot name="loading">Envoi...</slot>
 			</span>
 		</button>
 	</div>
@@ -20,7 +21,7 @@
 export default {
 	props: {
 		error: String,
-		isLoading: Boolean
+		isLoading: Boolean,
 	}
 }
 </script>

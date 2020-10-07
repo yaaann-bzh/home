@@ -98,4 +98,8 @@ hr{
 	}
 }
 
+input.invalid, textarea.invalid, select.invalid{
+		border: 1px solid red;
+		background-color: #ffc9aa;
+	}
 </style>

@@ -73,7 +73,10 @@
                     <small class="form-text text-danger">{{ errors[0] }}</small>
                 </validation-provider>            
             </div>
-            <submit-button :error="sendingError" :isLoading="isLoading"></submit-button>
+            <submit-button :error="sendingError" :isLoading="isLoading">
+                <span slot="text">Ajouter</span>
+                <span slot="loading">Envoi...</span>
+            </submit-button>  
         </form>
         <div v-else class="col-12 col-md-8 offset-md-2 mb-5 alert alert-success text-center lead">
             {{ successMessage }} -> 

@@ -65,7 +65,7 @@
                                     class="nav-link active pr-3 pl-3 pb-xl-3 rounded-top" 
                                     :to="{name: 'login'}" 
                                     active-class="custom-active">
-                                <font-awesome-icon icon="user-lock" @click="login"/><!--NOTA : @click A SUPPRIMER-->
+                                <font-awesome-icon icon="user-lock"/>
                                 <span class="ml-2 d-xl-none">administration</span>
                             </router-link>
                         </li>
@@ -78,7 +78,8 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
     data() {
         return {
@@ -88,17 +89,14 @@ export default {
     },
     methods: {
         ...mapActions({
-            login: 'login',
             logout: 'logout'
         })
     },
 	computed: {
-		isAuthenticated() {
-			return this.$store.getters.isAuthenticated
-        },
-        activeTab() {
-            return this.$store.getters.activeTab;
-        }
+        ...mapGetters({
+            isAuthenticated: 'isAuthenticated',
+            activeTab: 'activeTab'
+        })
     }
 }
 </script>

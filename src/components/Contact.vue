@@ -40,7 +40,10 @@
                             <small class="form-text text-danger">{{ errors[0] }}</small>
                         </validation-provider>
                     </div>
-                <submit-button :error="sendingError" :isLoading="isLoading"></submit-button>
+                    <submit-button :error="sendingError" :isLoading="isLoading">
+                        <span slot="text"><font-awesome-icon :icon="['far', 'envelope']"/> Envoyer</span>
+                        <span slot="loading">Envoi...</span>
+                    </submit-button>
                 </form>
                 <div v-else class="col-12 col-md-8 offset-md-2 mb-5 alert alert-success text-center lead">
                     Le message a bien été envoyé ! Merci
@@ -140,11 +143,6 @@ export default {
 </script>
 
 <style scoped>
-	.invalid {
-		border: 1px solid red;
-		background-color: #ffc9aa;
-	}
-
     .fade-enter {
 		opacity: 0;
 	}
