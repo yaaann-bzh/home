@@ -1,9 +1,9 @@
 <template>
-	<div class="mt-lg-5 col-10 offset-1 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
+	<div class="mt-lg-5">
 		<h1 class="h3 text-center">Connexion</h1>
 		<hr>
-		<validation-observer v-slot="{ handleSubmit }" tag="div">
-			<form @submit.prevent="handleSubmit(onSubmit)" class="rounded-lg p-4 bg-light">
+		<validation-observer v-slot="{ handleSubmit }" tag="div" class="row">
+			<form @submit.prevent="handleSubmit(onSubmit)" class="border border-dark rounded-lg p-4 bg-light col-10 offset-1 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
 				<div class="form-group">
 					<label class="col-form-label" for="email">Email</label>
 					<validation-provider mode="lazy" rules="required|email" v-slot="{ errors }">
