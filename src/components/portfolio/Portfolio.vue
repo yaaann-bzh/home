@@ -21,7 +21,7 @@
 							class="m-lg-2 p-lg-2 overflow-auto bg-white rounded"
 							:style="{maxHeight: maxContentHeight}">
 					</router-view>	
-					<div class="d-lg-none text-center"><a href="#main-navbar"><u>Haut de page</u></a></div>	
+					<app-top></app-top>
 				</div>
 			</transition>
 		</div>
@@ -29,6 +29,7 @@
 </template>
 
 <script>
+import backToTopVue from '../items/backToTop.vue';
 import ProjectListVue from './ProjectList.vue';
 
 export default {
@@ -92,7 +93,8 @@ export default {
 		}
 	},
 	components: {
-		projectList: ProjectListVue
+		projectList: ProjectListVue,
+		appTop: backToTopVue
 	}
 }
 </script>
