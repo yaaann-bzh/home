@@ -4,17 +4,19 @@
 			{{ fetchError }}
 		</div>
 		<app-loading v-if="isLoading"></app-loading>
-		<div class="row" v-if="projects.length && !isLoading">
-			<div class="col-12">
+		<b-navbar toggleable="lg" class="row mb-2" v-if="projects.length && !isLoading">
+			<b-navbar-toggle target="project-list" role="button" class="bg-secondary text-white btn-block dropdown-toggle d-lg-none p-2">Liste des projets</b-navbar-toggle>
+			<b-collapse class="col-12" id="project-list" v-model="isVisible">
 				<ul v-for="cathegory in projects" :key="cathegory.id" class="list-group">
 					<div class="list-group-item bg-light" v-if="cathegory.projects.length">
 						<strong>{{ cathegory.fullname }}</strong>
 					</div>
 					<ul class="list-group list-group-flush">
 						<li 
+							@click="collapseList(isVisible)"
 							v-for="project in cathegory.projects"
 							:key="project.id" 
-							class="list-group-item list-group-item-action p-0 d-flex align-items-center">
+							class="list-group-item list-group-item-action p-0 d-flex align-items-center nav-item">
 								<router-link 
 									active-class="custom-active-link"
 									:to="{name: 'projectShow', params: { id: project.id }}"
@@ -38,8 +40,8 @@
 						</li>
 					</ul>
 				</ul>
-			</div>
-		</div>
+			</b-collapse>
+		</b-navbar>
 	</div>
 </template>
 
@@ -50,6 +52,7 @@ import loadingVue from '../items/loading.vue';
 export default {
 	data() {
 		return {
+			isVisible: true,
 			isLoading: false,
 			fetchError: null,
 		}
@@ -61,6 +64,13 @@ export default {
 		})
 	},
 	methods: {
+		collapseList(isVisible) {
+			if (window.innerWidth >= 992 || !this.$route.params.id) {
+				this.isVisible = true;
+			} else {
+				this.isVisible = !isVisible
+			}
+		},
 		async loadProjects() {
             this.isLoading = true;
             try {
@@ -73,6 +83,10 @@ export default {
 	},
 	created() {
 		this.loadProjects();
+		window.addEventListener('resize', this.collapseList);
+	},
+	beforeDestroy() {
+		window.removeEventListener('resize', this.collapseList);
 	},
 	components: {
 		appLoading: loadingVue
@@ -81,5 +95,7 @@ export default {
 </script>
 
 <style>
+
+
 
 </style>

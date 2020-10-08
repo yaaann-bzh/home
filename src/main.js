@@ -10,7 +10,11 @@ import { faLinkedinIn, faGithubAlt, faCuttlefish, faGitlab, faEarlybirds, faGith
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { config } from "./wysiwyg.js";
- 
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
+
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 library.add(faTrash, faPen, faHome, faLinkedinIn, faGithubAlt, faEnvelope, faEarlybirds, faCuttlefish, faExternalLinkAlt, faArrowCircleRight, faGitlab, faGithub, faHandPointLeft, faHourglassEnd, faHourglassHalf, faUserLock, faUserCog)
  
 Vue.component('font-awesome-icon', FontAwesomeIcon)
@@ -18,6 +22,9 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 Vue.config.productionTip = false
 
 Vue.use(wysiwyg, config);
+
+Vue.use(BootstrapVue)
+Vue.use(BootstrapVueIcons)
 
 new Vue({
 	render: h => h(App),

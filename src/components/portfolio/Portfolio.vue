@@ -5,25 +5,16 @@
 			<hr>
 		</div>
 		<div class="row">
-			<transition name="list-slide" mode="out-in">
-				<div class="col-12 col-lg-4 border-right border-success overflow-auto" :style="{maxHeight: maxContentHeight}" v-show="showList">
-					<project-list @click="defineShow"></project-list>
-				</div>
-			</transition>
-			<transition name="detail-slide" mode="out-in">
-				<div class="col-12 col-lg-8" v-show="showDetail">
-					<div class="d-lg-none">
-						<button type="button" class="btn btn-outline-success btn-block mb-2"  @click="defineShow">
-							<font-awesome-icon :icon="['fas', 'hand-point-left']" class="mr-2"/>Retour à la liste
-						</button>
-					</div>
-					<router-view 
-							class="m-lg-2 p-lg-2 overflow-auto bg-white rounded"
-							:style="{maxHeight: maxContentHeight}">
-					</router-view>	
-					<app-top></app-top>
-				</div>
-			</transition>
+			<div class="col-12 col-lg-4 border-right border-success overflow-auto" :style="{maxHeight: maxContentHeight}">
+				<project-list></project-list>
+			</div>
+			<div class="col-12 col-lg-8">
+				<router-view 
+						class="m-lg-2 p-lg-2 overflow-auto bg-white rounded"
+						:style="{maxHeight: maxContentHeight}">
+				</router-view>	
+				<app-top></app-top>
+			</div>
 		</div>
 	</div>
 </template>

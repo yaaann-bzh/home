@@ -1,21 +1,20 @@
 <template>
     <header>
-        <nav class="navbar sticky-top navbar-expand-xl navbar-dark bg-success pt-0 pb-0 row" id="main-navbar">
+        <b-navbar toggleable="xl" class="navbar sticky-top navbar-expand-xl navbar-dark bg-success pt-0 pb-0 row" id="main-navbar">
             <div class="container">
-                <div class="navbar-brand">
+                <b-navbar-brand class="navbar-brand">
                     <router-link to="/" role="button" class="btn btn-outline-light d-xl-none"><span @click="isNavbarVisible = false"><font-awesome-icon icon="home" class=""/></span></router-link>
                     <span class="d-xl-none"> / {{ activeTab }}</span>
                     <router-link to="/" class="d-none d-xl-block text-white navbar-brand">yaaann</router-link>
-                </div>
+                </b-navbar-brand>
                 
-                <button 
+                <b-navbar-toggle 
                         class="navbar-toggler" 
-                        type="button" 
-                        @click="isNavbarVisible = !isNavbarVisible">
+                        type="button"
+                        target="nav-collapse">
                     <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" :class="{show: isNavbarVisible}">
+                </b-navbar-toggle>
+                <b-collapse class="navbar-collapse" v-model="isNavbarVisible" id="nav-collapse">
                     <ul class="navbar-nav ml-auto mt-3" @mouseleave="isAdminVisible = false">
                         <li class="nav-item" @click="isNavbarVisible = false">
                             <router-link class="nav-link active pr-3 pl-3 pb-xl-3 rounded-top text-nowrap" :to="{name: 'home'}" active-class="custom-active" exact>
@@ -43,7 +42,7 @@
                             <a href="https://github.com/yaaann-bzh" target="_blank" class="nav-link active mr-2 xl-mr-0"><font-awesome-icon :icon="['fab', 'github-alt']"/></a>
                         </li>
                         <li class="nav-item dropdown d-none d-xl-inline" @click="isNavbarVisible = false" v-if="isAuthenticated">
-                           <a  
+                        <a  
                                     href="#"
                                     class="nav-link dropdown-toggle custom-active pr-3 pl-3 pb-xl-3 rounded-top" 
                                     role="button"
@@ -70,10 +69,10 @@
                             </router-link>
                         </li>
                     </ul>
-                </div>
+                </b-collapse>
             </div>
             
-        </nav>
+        </b-navbar>
     </header>
 </template>
 
