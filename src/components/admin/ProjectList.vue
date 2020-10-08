@@ -7,7 +7,7 @@
 		<div class="row" v-if="projects.length && !isLoading">
 			<div class="col-12">
 				<ul v-for="cathegory in projects" :key="cathegory.id" class="list-group">
-					<div class="list-group-item bg-light">
+					<div class="list-group-item bg-light" v-if="cathegory.projects.length">
 						<strong>{{ cathegory.fullname }}</strong>
 					</div>
 					<ul class="list-group list-group-flush">
