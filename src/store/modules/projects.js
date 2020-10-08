@@ -16,6 +16,9 @@ const mutations = {
     'ADD_PROJECT'(state, payload) {
         state.projects[payload.id] = payload;
         //Object.defineProperty(state.projects, payload.id, payload);
+    },
+    'DELETE_PROJECT'(state, id) {
+        state.projects[id] = null;
     }
 }
 
@@ -97,6 +100,31 @@ const actions = {
         }
 
         context.commit('ADD_PROJECT', responseData);
+        context.dispatch('fetchProjectList', true);
+    },
+    async deleteProject(context, id) {
+        const idToken = context.getters.idToken
+        if (!idToken) {
+            throw new Error('Vous devez être authentifié pour faire cela.')
+        }
+        
+        const url = context.getters.baseUrl + 'api/admin/projects/' + id;
+
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + idToken
+            }
+        })
+
+        if (!response.ok) {
+            const responseData = await response.json();
+            const error = new Error(responseData.message || 'Failed!');
+            throw error;
+        }
+
+        context.commit('DELETE_PROJECT', id);
         context.dispatch('fetchProjectList', true);
     },
     async fetchProjectList(context, force = false) {
