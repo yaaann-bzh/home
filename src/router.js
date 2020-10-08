@@ -38,6 +38,12 @@ const ProjectAdd = resolve => {
     }, 'administration')
 }
 
+const ProjectEdit = resolve => {
+    require.ensure(['./components/admin/ProjectEdit.vue'], () => {
+        resolve(require('./components/admin/ProjectEdit.vue'));
+    }, 'administration')
+}
+
 const error404 = resolve => {
     require.ensure(['./components/errors/404.vue'], () => {
         resolve(require('./components/errors/404.vue'));
@@ -57,10 +63,9 @@ const routes = [
     { path: '/contact', component: Contact, name: 'contact' },
     { path: '/login', component: Login , name: 'login' },
     { path: '/admin/', component: Admin, name: 'admin', children: [
-        { path: 'projects/', component: ProjectList , name: 'projectList', children: [
-            { path: 'edit/:id', component: null, name: 'projectEdit' },
-            { path: 'delete/:id', component: null, name: 'projectDelete' }
-        ]},
+        { path: 'projects/', component: ProjectList , name: 'projectList' },
+        { path: 'project/edit/:id', component: ProjectEdit, name: 'projectEdit' },
+        { path: 'project/delete/:id', component: null, name: 'projectDelete' },
         { path: 'project/add', component: ProjectAdd , name: 'projectAdd' }
     ], beforeEnter: (to, from, next) => {
         if (!store.getters.isAuthenticated) {

@@ -74,13 +74,13 @@
                 </validation-provider>            
             </div>
             <submit-button :error="sendingError" :isLoading="isLoading">
-                <span slot="text">Ajouter</span>
+                <span slot="text">{{ buttonText }}</span>
                 <span slot="loading">Envoi...</span>
             </submit-button>  
         </form>
         <div v-else class="col-12 col-md-8 offset-md-2 mb-5 alert alert-success text-center lead">
             {{ successMessage }} -> 
-            <router-link :to="{name: 'projectShow', params: { id: newProjectId }}">voir</router-link>
+            <router-link :to="{name: 'projectShow', params: { id: projectId }}">voir</router-link>
             <br>
             ou 
             <a href="#" role="button" @click="sendingSuccess = false">Ajouter un autre projet</a>
@@ -98,9 +98,9 @@ import { mapGetters } from 'vuex';
 export default {
     data() {
         return {
-            // Try to use regex in variable but doesnt work even in custom vamidator
+            // Try to use regex in variable but doesnt work even in custom validator
             regexUrl: '/^https?://[a-z0-9/:%_+.,#?!@&=-]+$/i',
-            newProjectId: null,
+            projectId: null,
             isLoading: false,
             catLoading: false,
             sendingSuccess: false,
@@ -110,6 +110,7 @@ export default {
     },
     props: {
         successMessage: String,
+        buttonText: String,
         project: Object
     },
     components: {
@@ -139,7 +140,12 @@ export default {
         async onSubmit() {
             this.isLoading = true;
             try {
-                this.newProjectId = await this.$store.dispatch('addProject', this.project);
+                if (this.project.id) {
+                    this.projectId = this.project.id;
+                    await this.$store.dispatch('updateProject', this.project); 
+                } else {
+                    this.projectId = await this.$store.dispatch('addProject', this.project);
+                }
                 this.sendingSuccess = true;
             } catch (error) {
                 this.sendingError = error.message || 'Something went wrong!';
