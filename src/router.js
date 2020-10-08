@@ -11,7 +11,13 @@ import Contact from './components/Contact.vue';
 const Portfolio = resolve => {
     require.ensure(['./components/portfolio/Portfolio.vue'], () => {
         resolve(require('./components/portfolio/Portfolio.vue'));
-    })
+    }, 'portfolio')
+};
+
+const Project = resolve => {
+    require.ensure(['./components/portfolio/Project.vue'], () => {
+        resolve(require('./components/portfolio/Project.vue'));
+    }, 'portfolio')
 };
 
 const Login = resolve => {
@@ -27,8 +33,8 @@ const Admin = resolve => {
 }
 
 const ProjectList = resolve => {
-    require.ensure(['./components/admin/ProjectList.vue'], () => {
-        resolve(require('./components/admin/ProjectList.vue'));
+    require.ensure(['./components/portfolio/ProjectList.vue'], () => {
+        resolve(require('./components/portfolio/ProjectList.vue'));
     }, 'administration')
 }
 
@@ -56,7 +62,7 @@ const error404 = resolve => {
     })
 };
 
-import Projects from './components/portfolio/projects/projects.js'
+//import Projects from './components/portfolio/projects/projects.js'
 
 Vue.use(VueRouter)
 
@@ -65,7 +71,9 @@ const routes = [
     { path: '/competences', component: Skills, name: 'skills' },
     { path: '/formations', component: Educations, name: 'educations' },
     { path: '/experiences', component: Experiences, name: 'experiences' },
-    { path: '/portfolio/', component: Portfolio, name: 'portfolio', children: Projects},
+    { path: '/portfolio/', component: Portfolio, name: 'portfolio', children: [
+        { path: ':id', name: 'projectShow', component: Project },
+    ]},
     { path: '/contact', component: Contact, name: 'contact' },
     { path: '/login', component: Login , name: 'login' },
     { path: '/admin/', component: Admin, name: 'admin', children: [

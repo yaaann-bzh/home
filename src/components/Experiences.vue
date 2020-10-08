@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import extProLinksVue from './links/extProLinks.vue';
+import extProLinksVue from './items/extProLinks.vue';
 export default {
 	created() {
         document.body.classList.add('experiences-page');

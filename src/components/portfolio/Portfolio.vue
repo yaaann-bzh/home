@@ -7,34 +7,7 @@
 		<div class="row">
 			<transition name="list-slide" mode="out-in">
 				<div class="col-12 col-lg-4 border-right border-success overflow-auto" :style="{maxHeight: maxContentHeight}" v-show="showList">
-					<div v-if="projects.pro.length">
-						<h2 class="h6 mt-2 text-center bg-secondary text-white p-1 rounded-sm">
-							Missions professionnelles
-						</h2>
-						<ul class="list-group list-group-flush">
-							<app-project-item v-for="project in projects.pro" :key="project.key" :path="project.path" :title="project.title" :defineShow="defineShow"></app-project-item>						
-						</ul>
-					</div>
-					<div v-if="projects.oc.length">
-						<h2 class="h6 mt-2 text-center  bg-secondary text-white p-1 rounded-sm">
-							Projets réalisés pendant ma formation de Développeur Web chez
-							<a href="https://openclassrooms.com/fr/paths/48-developpeur-web-junior" class="text-white" target="_blank">
-								<u>OpenClassrooms</u>
-							</a>
-						</h2>
-						<ul class="list-group list-group-flush">
-							<app-project-item v-for="project in projects.oc" :key="project.key" :path="project.path" :title="project.title" :defineShow="defineShow"></app-project-item>							
-						</ul>
-					</div>
-					<div v-if="projects.others.length">
-						<h2 class="h6 mt-2 text-center bg-secondary text-white p-1 rounded-sm">
-							Projets personnels
-						</h2>
-						<ul class="list-group list-group-flush">
-							<app-project-item v-for="project in projects.others" :key="project.key" :path="project.path" :title="project.title" :defineShow="defineShow"></app-project-item>						
-						</ul>
-					</div>
-
+					<project-list @click="defineShow"></project-list>
 				</div>
 			</transition>
 			<transition name="detail-slide" mode="out-in">
@@ -44,14 +17,10 @@
 							<font-awesome-icon :icon="['fas', 'hand-point-left']" class="mr-2"/>Retour à la liste
 						</button>
 					</div>
-					<transition name="fade" type="out-in">
-						<keep-alive>
-							<router-view 
-									class="m-lg-2 p-lg-2 overflow-auto bg-white rounded"
-									:style="{maxHeight: maxContentHeight}">
-							</router-view>
-						</keep-alive>	
-					</transition>
+					<router-view 
+							class="m-lg-2 p-lg-2 overflow-auto bg-white rounded"
+							:style="{maxHeight: maxContentHeight}">
+					</router-view>	
 					<div class="d-lg-none text-center"><a href="#main-navbar"><u>Haut de page</u></a></div>	
 				</div>
 			</transition>
@@ -60,45 +29,17 @@
 </template>
 
 <script>
-import routes from "./projects/projects.js";
-import ProjectItemVue from './ProjectItem.vue';
+import ProjectListVue from './ProjectList.vue';
 
 export default {
 	data() {
 		return {
-			title: this.$route.meta.title,
-			routes: routes,
-			projects: {
-				oc: [],
-				others: [],
-				pro: []
-			},
 			maxContentHeight: '',
 			showList: true,
 			showDetail: true
 		}
 	},	
 	created() {
-		this.routes.forEach(route => {
-			if (route.meta) {
-				switch (route.meta.list) {
-				case 'oc':
-					this.projects.oc.push({ path: route.path, title: route.meta.title})
-					break;
-
-				case 'others':
-					this.projects.others.push({ path: route.path, title: route.meta.title})
-					break;
-
-				case 'pro':
-					this.projects.pro.push({ path: route.path, title: route.meta.title})
-					break;
-			
-				default:
-					break;
-				}
-			}
-		});
 		window.addEventListener('resize', this.displayInit);
 	},
 	mounted() {
@@ -151,7 +92,7 @@ export default {
 		}
 	},
 	components: {
-		appProjectItem: ProjectItemVue
+		projectList: ProjectListVue
 	}
 }
 </script>
@@ -198,19 +139,5 @@ export default {
 	}
 }
 
-
-@media (min-width: 992px) {
-	.fade-enter {
-		opacity: 0;
-	}
-
-	.fade-enter-active {
-		transition: opacity 1s;
-	}
-
-	.fade-leave-active {
-		opacity: 0;
-	}
-}
 
 </style>

@@ -92,7 +92,7 @@
 import "vue-wysiwyg/dist/vueWysiwyg.css"; 
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 import { required, max, min, regex } from "vee-validate/dist/rules";
-import submitVue from '../form/submit.vue';
+import submitVue from '../items/submit.vue';
 import { mapGetters } from 'vuex';
 
 export default {

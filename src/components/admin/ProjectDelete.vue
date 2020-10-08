@@ -6,7 +6,7 @@
 			<p><strong>{{ project.title }}</strong></p>
 			<p>Cette action est irréversible.</p>
 		</div>
-		<div v-if="isLoading">Chargement...</div>
+		<app-loading v-if="isLoading"></app-loading>
 		<div v-if="isDeleted"><strong>Projet supprimé</strong></div>
 		<div class="d-flex justify-content-around">
 			<button type="button" class="btn btn-light m-2" @click="cancelDelete" :disabled="isDeleting">Retour</button>
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import loadingVue from '../items/loading.vue'
 export default {
 	data() {
 		return {
@@ -64,7 +65,10 @@ export default {
 	},
 	created() {
 		this.loadProject();
-    }
+	},
+	components: {
+		appLoading: loadingVue
+	}
 }
 </script>
 

@@ -3,7 +3,7 @@
 		<div class="alert alert-danger text-center" role="alert" v-if="fetchError && !isLoading">
 			{{ fetchError }}
 		</div>
-		<div v-if="isLoading">Chargement...</div>
+		<app-loading v-if="isLoading"></app-loading>
 		<div class="row" v-if="projects.length && !isLoading">
 			<div class="col-12">
 				<ul v-for="cathegory in projects" :key="cathegory.id" class="list-group">
@@ -14,22 +14,25 @@
 						<li 
 							v-for="project in cathegory.projects"
 							:key="project.id" 
-							class="list-group-item list-group-item-action p-2 d-flex align-items-center">
+							class="list-group-item list-group-item-action p-0 d-flex align-items-center">
 								<router-link 
+									active-class="custom-active-link"
 									:to="{name: 'projectShow', params: { id: project.id }}"
-									class="custom-link flex-grow-1 mr-1 ml-1">
+									class="custom-link flex-grow-1">
 										{{ project.short_title }}
 								</router-link>
 								<router-link
+									v-if="isAuthenticated"
 									:to="{name: 'projectEdit', params: { id: project.id }}"
 									tag="a"
-									type="button" class="btn btn-outline-info mr-1 ml-1">
+									type="button" class="btn btn-outline-info m-2">
 										<font-awesome-icon icon="pen"/>
 								</router-link>
 								<router-link
+									v-if="isAuthenticated"
 									:to="{name: 'projectDelete', params: { id: project.id }}"
 									tag="a"
-									type="button" class="btn btn-outline-danger mr-1 ml-1">
+									type="button" class="btn btn-outline-danger m-2">
 										<font-awesome-icon icon="trash"/>
 								</router-link>
 						</li>
@@ -42,6 +45,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import loadingVue from '../items/loading.vue';
 
 export default {
 	data() {
@@ -52,22 +56,26 @@ export default {
 	},
 	computed: {
 		...mapGetters({
-			projects: 'projectList'
+			projects: 'projectList',
+			isAuthenticated: 'isAuthenticated'
 		})
 	},
 	methods: {
 		async loadProjects() {
-            this.catLoading = true;
+            this.isLoading = true;
             try {
                 await this.$store.dispatch('fetchProjectList');
             } catch (error) {
                 this.fetchError = error.message || 'Something went wrong!';
             }
-            this.catLoading = false;
+            this.isLoading = false;
 		}
 	},
 	created() {
 		this.loadProjects();
+	},
+	components: {
+		appLoading: loadingVue
 	}
 }
 </script>

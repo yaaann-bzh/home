@@ -30,7 +30,7 @@
 <script>
 import { ValidationObserver, ValidationProvider, extend } from 'vee-validate'
 import { email, required } from 'vee-validate/dist/rules'
-import submitVue from '../form/submit.vue'
+import submitVue from '../items/submit.vue'
 
 export default {
 	data() {

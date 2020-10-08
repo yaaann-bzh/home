@@ -57,7 +57,7 @@
 import { ValidationProvider, ValidationObserver, extend } from 'vee-validate';
 import { required, email } from "vee-validate/dist/rules";
 import { mapGetters } from "vuex";
-import submitVue from './form/submit.vue';
+import submitVue from './items/submit.vue';
 
 export default {
     data () {

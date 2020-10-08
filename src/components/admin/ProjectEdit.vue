@@ -5,11 +5,12 @@
 			{{ fetchError }}
 		</div>
 		<project-form v-if="!isLoading" :successMessage="successMessage"  :buttonText="buttonText" :project="project"></project-form>
-        <div v-else>Chargement...</div>
+        <app-loading v-else></app-loading>
 	</div>
 </template>
 
 <script>
+import loadingVue from '../items/loading.vue';
 import ProjectFormVue from './ProjectForm.vue'
 
 export default {
@@ -25,6 +26,7 @@ export default {
 	},
 	components: {
 		ProjectForm: ProjectFormVue,
+		appLoading: loadingVue
     },
 	methods: {
 		async loadProject() {
