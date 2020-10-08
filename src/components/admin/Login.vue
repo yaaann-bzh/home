@@ -58,7 +58,7 @@ export default {
 				}
 				await this.$store.dispatch('login', loginForm)
 			} catch (error) {
-				this.sendingError = error.message;
+				this.error = error.message;
 			}
 			this.isLoading = false;
 		}

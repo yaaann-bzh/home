@@ -48,7 +48,7 @@ const actions = {
 		const responseData = await response.json()
 
         if (!response.ok) {
-            const error = new Error(responseData.message || 'Failed!');
+			const error = new Error(responseData.message || 'Failed!');
             throw error;
 		}
 
