@@ -1,4 +1,9 @@
-//import router from '../../router';
+function replaceEmtyString(key, value) {
+    if (value === '') {
+        return null;
+    }
+    return value
+}
 
 const state = {
     projectCathegories: [],
@@ -58,7 +63,7 @@ const actions = {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + idToken
             },
-            body: JSON.stringify(project)
+            body: JSON.stringify(project, replaceEmtyString)
         })
 
         const responseData = await response.json();

@@ -58,14 +58,14 @@
             </div>
             <div class="form-group">
                 <label for="tldr">Résumé TLDR</label>
-                <validation-provider mode="lazy" rules="required|max:1000" v-slot="{ errors }">
+                <validation-provider mode="lazy" rules="required|max:2000" v-slot="{ errors }">
                     <wysiwyg v-model.trim="project.tldr" class="" name="tldr" id="tldr" :class="{invalid: errors[0]}"/>
                     <small class="form-text text-danger">{{ errors[0] }}</small>
                 </validation-provider>
             </div>
             <div class="form-group">
                 <label for="content">Enoncé :</label>
-                <validation-provider mode="lazy" rules="required|content:20,18000" v-slot="{ errors }">
+                <validation-provider mode="lazy" rules="required|content:20,20000" v-slot="{ errors }">
                     <wysiwyg v-model.trim="project.content" class="" name="content" id="content" :class="{invalid: errors[0]}"/>
                     <small class="form-text text-muted">
                         {{ project.content.length }} / 18000

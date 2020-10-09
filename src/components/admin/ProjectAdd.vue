@@ -15,9 +15,9 @@ export default {
 			buttonText: 'Ajouter',
 			project: {
                 author_id: null,
-                url: '',
-                github_url: '',
-                gitlab_url: '',
+                url: null,
+                github_url: null,
+                gitlab_url: null,
                 pictures: null,
                 title: '',
                 short_title: '',
