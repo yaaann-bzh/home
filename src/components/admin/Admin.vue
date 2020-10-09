@@ -4,7 +4,7 @@
 			<h1 class="h2 text-center">Espace admin</h1>
 			<hr>
 		</div>
-		<div class="row">
+		<div class="row align-items-start">
 			<actions-list class="col-12 col-lg-4 col-xl-3"></actions-list>
 				<div class="col-12 col-lg-8 col-xl-9">
 				<router-view class="m-lg-2 p-lg-2"></router-view>

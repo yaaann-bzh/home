@@ -4,7 +4,7 @@
 			<h1 class="h2">Portfolio</h1>
 			<hr>
 		</div>
-		<div class="row">
+		<div class="row align-items-start">
 			<div class="col-12 col-lg-4 border-right border-success overflow-auto" :style="{maxHeight: maxContentHeight}">
 				<project-list :admin="showAdmin"></project-list>
 			</div>
