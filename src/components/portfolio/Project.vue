@@ -28,6 +28,16 @@
 						</a>	
 					</p>
 				</div>
+				<div v-if="isAuthenticated" class="col-12 mb-3">
+					<hr>
+					<div class="d-flex  justify-content-between">
+						<div>
+							<p>Création : {{ project.created_at | dateFormat }}</p>
+							<p v-if="project.updated_at">Modifié le : {{ project.updated_at | dateFormat }}</p>
+						</div>
+						<admin-button :id="project.id"></admin-button>
+					</div>
+				</div>
 				<div class="card bg-light mt-1 ml-3 mr-3 mb-1">
 					<div class="card-header">
 						<strong>tl ; dr</strong>
@@ -46,6 +56,7 @@
 </template>
 
 <script>
+import adminButtonVue from '../items/adminButton.vue';
 import loadingVue from '../items/loading.vue';
 
 export default {
@@ -55,6 +66,22 @@ export default {
 			project: {},
 			isLoading: true,
 			fetchError: null,			
+		}
+	},
+	computed: {
+		isAuthenticated() {
+			return this.$store.getters.isAuthenticated;
+		}
+	},
+	filters: {
+		dateFormat(date) {
+			date = date.substring(0, date.lastIndexOf('.'));
+			let event = new Date(date);
+			let day = event.getDay();
+			let month = event.getMonth() + 1;
+			let year = event.getFullYear();
+			let time = event.toTimeString();
+			return day + '-' + month + '-' + year + ' ' + time.substring(0, 5);
 		}
 	},
 	methods: {
@@ -78,7 +105,8 @@ export default {
 		}
 	},
 	components: {
-		appLoading: loadingVue
+		appLoading: loadingVue,
+		adminButton: adminButtonVue
 	}
 }
 </script>
