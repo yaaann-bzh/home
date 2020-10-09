@@ -1,6 +1,6 @@
 <template>
     <header>
-        <b-navbar toggleable="xl" class="navbar sticky-top navbar-expand-xl navbar-dark bg-success pt-0 pb-0 row" id="main-navbar">
+        <b-navbar toggleable="xl" class="navbar sticky-top navbar-expand-xl navbar-dark bg-yaaann pt-0 pb-0 row" id="main-navbar">
             <div class="container">
                 <b-navbar-brand class="navbar-brand">
                     <router-link to="/" role="button" class="btn btn-outline-light d-xl-none"><span @click="isNavbarVisible = false"><font-awesome-icon icon="home" class=""/></span></router-link>
@@ -112,7 +112,7 @@ export default {
 }
 .custom-active {
     background-color: white;
-    color: #28a745 !important;
+    color: #333333 !important;
 }
 
 </style>

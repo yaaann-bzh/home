@@ -6,7 +6,7 @@
 		</div>
 		<div class="row">
 			<div class="col-12 col-lg-4 border-right border-success overflow-auto" :style="{maxHeight: maxContentHeight}">
-				<project-list></project-list>
+				<project-list :admin="showAdmin"></project-list>
 			</div>
 			<div class="col-12 col-lg-8">
 				<router-view 
@@ -27,8 +27,7 @@ export default {
 	data() {
 		return {
 			maxContentHeight: '',
-			showList: true,
-			showDetail: true
+			showAdmin: false,
 		}
 	},	
 	created() {
@@ -60,27 +59,9 @@ export default {
 				document.querySelector('body').classList.remove('overflow-hidden');
 			}
 		},
-		switchView() {
-			this.showList = !this.showList;
-			this.showDetail = !this.showList;
-		},
-		defineShow() {
-			if (window.innerWidth < 992) {
-				if (this.$route.path === "/portfolio") {
-					this.showDetail = false;
-					this.showList = true;
-				} else {
-					this.switchView();
-				}
-			} else {
-				this.showDetail = true;
-				this.showList = true;
-			}
-		},
 		displayInit() {
 			this.defineContentHeight();
 			this.defineBodyOverflow();
-			this.defineShow();
 		}
 	},
 	components: {

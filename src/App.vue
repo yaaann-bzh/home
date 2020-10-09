@@ -3,7 +3,7 @@
 		<app-header></app-header>
 		<div class="container mt-2 mt-md-0 pt-md-5 pb-5" id="main-container">
 			<div class="row">
-				<transition name="app-slide" type="out-in">
+				<transition name="app-slide" mode="out-in">
 					<router-view class="col-12 col-md-10 offset-md-1"></router-view>
 				</transition>
 			</div>
@@ -67,12 +67,17 @@ hr{
 	background-color: #28a745 !important;
 }
 
+.bg-yaaann {
+	background-color: #424242 !important; 
+	color: white;
+}
+
 .app-slide-enter-active {
-	animation: app-slide-in 1s ease-out forwards;
+	animation: app-slide-in 0.5s ease-out forwards;
 }
 
 .app-slide-leave-active {
-	animation: app-slide-out 1s ease-out forwards;
+	animation: app-slide-out 0.5s ease-out forwards;
 	position: absolute;
 }
 

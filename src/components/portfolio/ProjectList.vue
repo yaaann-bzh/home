@@ -23,20 +23,7 @@
 									class="custom-link flex-grow-1">
 										{{ project.short_title }}
 								</router-link>
-								<router-link
-									v-if="isAuthenticated"
-									:to="{name: 'projectEdit', params: { id: project.id }}"
-									tag="a"
-									type="button" class="btn btn-outline-info m-2">
-										<font-awesome-icon icon="pen"/>
-								</router-link>
-								<router-link
-									v-if="isAuthenticated"
-									:to="{name: 'projectDelete', params: { id: project.id }}"
-									tag="a"
-									type="button" class="btn btn-outline-danger m-2">
-										<font-awesome-icon icon="trash"/>
-								</router-link>
+								<admin-button :id="project.id" :class="{ 'd-none': !admin }"></admin-button>
 						</li>
 					</ul>
 				</ul>
@@ -47,6 +34,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import adminButtonVue from '../items/adminButton.vue';
 import loadingVue from '../items/loading.vue';
 
 export default {
@@ -55,6 +43,13 @@ export default {
 			isVisible: true,
 			isLoading: false,
 			fetchError: null,
+		}
+	},
+	props: {
+		admin: {
+			type: Boolean,
+			required: false,
+			default: true
 		}
 	},
 	computed: {
@@ -89,7 +84,8 @@ export default {
 		window.removeEventListener('resize', this.collapseList);
 	},
 	components: {
-		appLoading: loadingVue
+		appLoading: loadingVue,
+		adminButton: adminButtonVue
 	}
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div v-for="item in items" :key="item.id" class="card">
-			<div class="card-header bg-success text-white">
+			<div class="card-header bg-yaaann">
 				{{ item.title }}
 			</div>
 			<ul class="list-group list-group-flush">
