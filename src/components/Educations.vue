@@ -3,6 +3,22 @@
 		<h1 class="h2 d-none d-md-block">Mes formations</h1>
 		<hr>
 		<div class="border rounded-lg p-3 mt-3 mb-3">
+			<h2 class="h4 text-success">Licence informatique (Bac+3)</h2>
+			<p class="p-2 bg-light">
+				<a href="https://www.cnam-paysdelaloire.fr/formations/domaines-de-formation/licence-informatique-1179073.kjsp?RH=4086335047079329">
+					<img src="../assets/logos/logo_cnam.png" alt="CNAM" style="height: 30px;" class="bg-danger p-1">
+					<u class="ml-3 text-dark">CNAM Pays de Loire</u>
+				</a>
+			</p>
+			<p>Octobre 2020 à Février 2021</p>
+			<ul>
+				<li>Concevoir des d’applications informatiques.</li>
+				<li>Développer des applications informatiques.</li>
+				<li>Exploiter, administrer et assurer la maintenance informatique.</li>
+				<li>Gérer, orienter et argumenter une démarche technico-commerciale.</li>
+			</ul>
+		</div>
+		<div class="border rounded-lg p-3 mt-3 mb-3">
 			<h2 class="h4 text-success">Titre RNCP Niveau III (Bac+2) - Développeur Web</h2>
 			<p class="p-2 bg-light">
 				<a href="https://openclassrooms.com/fr/paths/48-developpeur-web-junior">
