@@ -42,13 +42,13 @@
 					<div class="card-header">
 						<strong>tl ; dr</strong>
 					</div>
-					<div class="card-body" v-html="project.tldr">
+					<div class="card-body wysiwyg-cont" v-html="project.tldr">
 						{{ project.tldr }}
 					</div>
 				</div>
 				<div class="mt-3">
 					<p class="lead"><u>Descriptif détaillé :</u></p>
-					<span v-html="project.content"></span>
+					<span v-html="project.content" class="wysiwyg-cont"></span>
 				</div>
 			</div>
 		</transition>
@@ -77,7 +77,7 @@ export default {
 		dateFormat(date) {
 			date = date.substring(0, date.lastIndexOf('.'));
 			let event = new Date(date);
-			let day = event.getDay();
+			let day = event.getDate();
 			let month = event.getMonth() + 1;
 			let year = event.getFullYear();
 			let time = event.toTimeString();
@@ -111,12 +111,13 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 
-li > ul {
-    list-style-type: '- ';
-    font-style: italic;
-}
+.wysiwyg-cont img {
+	margin: 5px auto;
+	max-width: 90%;
+	max-height: 200px;
+} 
 
 .card-body p{
 	margin-bottom: 0.6rem; 

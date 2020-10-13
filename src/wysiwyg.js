@@ -4,9 +4,14 @@ export const config = {
         "table": true,
         "removeFormat": true
     },
-/*     image: {
-        uploadURL: "",// TODO
-        dropzoneOptions: {}
-    }, */
+    image: {
+        uploadURL: "https://back.yaaann.fr/index.php/api/admin/images",
+        dropzoneOptions: {
+            headers: {
+                /* 'Authorization': 'Bearer ' + idToken */
+            },
+        }
+    },
+    maxHeight: "500px",
     forcePlainTextOnPaste: true,
 }

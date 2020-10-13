@@ -1,4 +1,5 @@
 import router from '../../router'
+import { config } from "../../wysiwyg";
 
 const state = {
 	idToken: null,
@@ -60,6 +61,10 @@ const actions = {
 			expirationDate: expirationDate
 		});
 
+		config.image.dropzoneOptions.headers = {
+			'Authorization': 'Bearer ' + context.state.idToken
+		}
+
 		localStorage.setItem('token', responseData.token);
 		localStorage.setItem('userId', responseData.userId);
 		localStorage.setItem('expirationDate', expirationDate);
@@ -69,6 +74,7 @@ const actions = {
 	},
 	logout(context) {
 		context.commit('CLEAR_AUTH_USER');
+		config.image.dropzoneOptions.headers = {}
 		localStorage.removeItem('expirationDate');
 		localStorage.removeItem('token');
 		localStorage.removeItem('userId');
