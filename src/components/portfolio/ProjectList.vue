@@ -18,7 +18,7 @@
 							:key="project.id" 
 							class="list-group-item list-group-item-action p-0 d-flex align-items-center nav-item">
 								<router-link 
-									active-class="custom-active-link"
+									active-class="bg-success text-white"
 									:to="{name: 'projectShow', params: { id: project.id }}"
 									class="custom-link flex-grow-1">
 										{{ project.short_title }}

@@ -32,8 +32,8 @@
 					<hr>
 					<div class="d-flex  justify-content-between">
 						<div>
-							<p>Création : {{ project.created_at | dateFormat }}</p>
-							<p v-if="project.updated_at">Modifié le : {{ project.updated_at | dateFormat }}</p>
+							<p class="mb-1">Création : {{ project.created_at | dateFormat }}</p>
+							<p v-if="project.updated_at" class="mb-1">Modifié le : {{ project.updated_at | dateFormat }}</p>
 						</div>
 						<admin-button :id="project.id"></admin-button>
 					</div>

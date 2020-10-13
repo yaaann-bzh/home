@@ -17,7 +17,7 @@
 								:to="{name: li[1]}"
 								tag="div" 
 								class="custom-link"
-								active-class="custom-active-link">
+								active-class="bg-success text-white">
 							{{ li[0] }}
 						</router-link>
 					</li>
