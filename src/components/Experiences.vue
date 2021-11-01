@@ -22,6 +22,7 @@
                 <h2 class="h5">Assistant Chargé d'affaires en Génie climatique</h2>
             </div>
             <div class="card-body">
+                <p class="card-subtitle mb-3 mb-md-2 text-muted">Nov. 2020 à juil 2021 : DVB SARL - Le Poiré-sur-Vie (85)</p>
                 <p class="card-subtitle mb-3 mb-md-2 text-muted">Oct. 2018 à Avril 2019 : Fauchet SARL - La Verrie (85)</p>
                 <p class="card-subtitle mb-3 mb-md-2 text-muted">Oct. 2013 à Sept. 2018 : Eiffage Energie - La Roche-sur-Yon (85)</p>
                 <p class="card-subtitle mb-3 mb-md-2 text-muted">Sept. 2007 à Sept. 2013 : Boissonnade SAS - Rodez (12)</p>

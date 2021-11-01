@@ -10,7 +10,7 @@
 					<u class="ml-3 text-dark">CNAM Pays de Loire</u>
 				</a>
 			</p>
-			<p>Octobre 2020 à Février 2021</p>
+			<p>Octobre 2020 à Février 2022</p>
 			<p class="mb-1">Formation à distance :</p>
 			<ul>
 				<li>Concevoir des d’applications informatiques.</li>
