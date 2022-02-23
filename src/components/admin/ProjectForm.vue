@@ -6,14 +6,14 @@
                     <label for="url">Url :</label>
                     <!-- Try to use regex in variable but doesnt work even in custom vamidator -->
                     <validation-provider mode="lazy" :rules="{ regex: /^https?:\/\/[a-z0-9/:%_+.,#?!@&=-]+$/i }" v-slot="{ errors }">
-                        <input class="form-control" type="url" name="url" id="url" v-model.trim="project.url" :class="{invalid: errors[0]}">
+                        <input class="form-control" type="url" name="url" id="url" v-model.trim="item.url" :class="{invalid: errors[0]}">
                         <small class="form-text text-danger">{{ errors[0] }}</small>
                     </validation-provider>
                 </div>
                 <div class="form-group col-lg-6">
                     <label for="cathegory_id">Cathégorie :</label>
                     <validation-provider rules="required" v-slot="{ errors }">
-                        <select v-model="project.cathegory_id" id="cathegory_id" name="cathegory_id" class="form-control" v-if="!catLoading" :class="{invalid: errors[0]}">
+                        <select v-model="item.cathegory_id" id="cathegory_id" name="cathegory_id" class="form-control" v-if="!catLoading" :class="{invalid: errors[0]}">
                             <option value="">--Sélectionner une cathégorie--</option>
                             <option v-for="cathegory in cathegories" :key="cathegory.id" :value="cathegory.id">
                                 {{ cathegory.fullname }}
@@ -29,7 +29,7 @@
                     <label for="github_url">Dépôt Github</label>
                     <!-- Try to use regex in variable but doesnt work even in custom vamidator -->
                     <validation-provider mode="lazy" ::rules="{ regex: /^https?:\/\/[a-z0-9/:%_+.,#?!@&=-]+$/i }" v-slot="{ errors }">
-                        <input class="form-control" type="text" name="github_url" id="github_url" v-model.trim="project.github_url" :class="{invalid: errors[0]}">
+                        <input class="form-control" type="text" name="github_url" id="github_url" v-model.trim="item.github_url" :class="{invalid: errors[0]}">
                         <small class="form-text text-danger">{{ errors[0] }}</small>
                     </validation-provider>
                 </div>
@@ -37,7 +37,7 @@
                     <label for="gitlab_url">Dépôt Gitlab</label>
                     <!-- Try to use regex in variable but doesnt work even in custom vamidator -->
                     <validation-provider mode="lazy" :rules="{ regex: /^https?:\/\/[a-z0-9/:%_+.,#?!@&=-]+$/i }" v-slot="{ errors }">
-                        <input class="form-control" type="text" name="gitlab_url" id="gitlab_url" v-model.trim="project.gitlab_url" :class="{invalid: errors[0]}">
+                        <input class="form-control" type="text" name="gitlab_url" id="gitlab_url" v-model.trim="item.gitlab_url" :class="{invalid: errors[0]}">
                         <small class="form-text text-danger">{{ errors[0] }}</small>
                     </validation-provider>
                 </div>
@@ -45,30 +45,30 @@
             <div class="form-group">
                 <label for="title">Titre</label>
                 <validation-provider mode="lazy" rules="required|max:150" v-slot="{ errors }">
-                    <input class="form-control" type="text" name="title" id="title" v-model.trim="project.title" :class="{invalid: errors[0]}">
+                    <input class="form-control" type="text" name="title" id="title" v-model.trim="item.title" :class="{invalid: errors[0]}">
                     <small class="form-text text-danger">{{ errors[0] }}</small>
                 </validation-provider>
             </div>
             <div class="form-group">
                 <label for="short_title">Titre court</label>
                 <validation-provider mode="lazy" rules="required|max:50" v-slot="{ errors }">
-                    <input class="form-control" type="text" name="short_title" id="short_title" v-model.trim="project.short_title" :class="{invalid: errors[0]}">
+                    <input class="form-control" type="text" name="short_title" id="short_title" v-model.trim="item.short_title" :class="{invalid: errors[0]}">
                     <small class="form-text text-danger">{{ errors[0] }}</small>
                 </validation-provider>
             </div>
             <div class="form-group">
                 <label for="tldr">Résumé TLDR</label>
                 <validation-provider mode="lazy" rules="required|max:2000" v-slot="{ errors }">
-                    <wysiwyg v-model.trim="project.tldr" class="" name="tldr" id="tldr" :class="{invalid: errors[0]}"/>
+                    <wysiwyg v-model.trim="item.tldr" class="" name="tldr" id="tldr" :class="{invalid: errors[0]}"/>
                     <small class="form-text text-danger">{{ errors[0] }}</small>
                 </validation-provider>
             </div>
             <div class="form-group">
                 <label for="content">Enoncé :</label>
                 <validation-provider mode="lazy" rules="required|content:20,20000" v-slot="{ errors }">
-                    <wysiwyg v-model.trim="project.content" class="" name="content" id="content" :class="{invalid: errors[0]}"/>
+                    <wysiwyg v-model.trim="item.content" class="" name="content" id="content" :class="{invalid: errors[0]}"/>
                     <small class="form-text text-muted">
-                        {{ project.content.length }} / 18000
+                        {{ item.content.length }} / 18000
                     </small>                        
                     <small class="form-text text-danger">{{ errors[0] }}</small>
                 </validation-provider>            
@@ -105,7 +105,8 @@ export default {
             catLoading: false,
             sendingSuccess: false,
             fetchError: null,
-            sendingError: null 
+            sendingError: null,
+            item: null,
         }
     },
     props: {
@@ -142,9 +143,9 @@ export default {
             try {
                 if (this.project.id) {
                     this.projectId = this.project.id;
-                    await this.$store.dispatch('updateProject', this.project); 
+                    await this.$store.dispatch('updateProject', this.item); 
                 } else {
-                    this.projectId = await this.$store.dispatch('addProject', this.project);
+                    this.projectId = await this.$store.dispatch('addProject', this.item);
                 }
                 this.sendingSuccess = true;
             } catch (error) {
@@ -155,6 +156,7 @@ export default {
     },
     created() {       
         this.loadCathegories();
+        this.item = this.project;
     },
     beforeMount() {
         extend('regex', {
